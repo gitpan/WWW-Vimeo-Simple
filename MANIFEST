@@ -1,0 +1,16 @@
+Changes
+MANIFEST
+Makefile.PL
+README
+lib/WWW/Vimeo/Simple.pm
+lib/WWW/Vimeo/Simple/Activity.pm
+lib/WWW/Vimeo/Simple/Album.pm
+lib/WWW/Vimeo/Simple/Channel.pm
+lib/WWW/Vimeo/Simple/Group.pm
+lib/WWW/Vimeo/Simple/User.pm
+lib/WWW/Vimeo/Simple/Video.pm
+t/00-load.t
+t/manifest.t
+t/pod-coverage.t
+t/pod.t
+META.yml                                 Module meta-data (added by MakeMaker)
