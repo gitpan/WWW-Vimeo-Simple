@@ -1,5 +1,65 @@
-Revision history for WebService-Vimeo-Simple
+commit f2d4e6a05b95ab5bb85f74dc4ad976e7f4a0a70d
+Author: Alessandro Ghedini <al3xbio@gmail.com>
+Date:   Mon May 31 14:58:45 2010 +0200
 
-0.01    Date/time
-        First version, released on an unsuspecting world.
+    update version
 
+commit ff37f5ba1318337d7fe841115f9ca563720273cf
+Author: Alessandro Ghedini <al3xbio@gmail.com>
+Date:   Mon May 31 14:58:10 2010 +0200
+
+    add better description in section NAME of modules' pod
+
+commit 25316f6bc3d17b42c9cd961eac77d51ab60e362b
+Author: Alessandro Ghedini <al3xbio@gmail.com>
+Date:   Mon May 31 14:41:12 2010 +0200
+
+    add documentation changes
+
+commit 8b3d247948903d400ab8c2fad4ea295f104a53b9
+Author: Alessandro Ghedini <al3xbio@gmail.com>
+Date:   Sun May 30 20:02:09 2010 +0200
+
+    update Changes
+
+commit ba73c78e37e8eae09bfd4a5be54086496eabfe6e
+Author: Alessandro Ghedini <al3xbio@gmail.com>
+Date:   Sun May 30 19:41:19 2010 +0200
+
+    implement Group.pm
+
+commit f6b55348e3598d93d3eda4e719039d0f4c37c99f
+Author: Alessandro Ghedini <al3xbio@gmail.com>
+Date:   Sun May 30 19:17:51 2010 +0200
+
+    add documentation improvements
+
+commit bf3739111ce32b4df7cd2da8c69a9fcef953d42e
+Author: Alessandro Ghedini <al3xbio@gmail.com>
+Date:   Sun May 30 19:05:52 2010 +0200
+
+    add page support
+
+commit a4e9c4281a3f58c135740d9335ef4257c388234b
+Author: Alessandro Ghedini <al3xbio@gmail.com>
+Date:   Sun May 30 18:45:32 2010 +0200
+
+    implement Channel.pm
+
+commit 2b935936678f5da3d95e06ebc4643a873fab2b43
+Author: Alessandro Ghedini <al3xbio@gmail.com>
+Date:   Sun May 30 18:32:25 2010 +0200
+
+    implement Album.pm
+
+commit df4bcd412ff60ee119ad3bae8fff1e30ae43cd8f
+Author: Alessandro Ghedini <al3xbio@gmail.com>
+Date:   Sun May 30 18:17:23 2010 +0200
+
+    implement Activity.pm
+
+commit de585110d3f8d2fd8ac5cf18b278428880a8c877
+Author: Alessandro Ghedini <al3xbio@gmail.com>
+Date:   Sun May 30 17:38:45 2010 +0200
+
+    first commit

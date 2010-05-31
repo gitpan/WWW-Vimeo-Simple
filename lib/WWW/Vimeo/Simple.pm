@@ -19,11 +19,11 @@ WWW::Vimeo::Simple - Object-oriented Vimeo Simple API interface.
 
 =head1 VERSION
 
-Version 0.01
+Version 0.02
 
 =cut
 
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 
 
 =head1 SYNOPSIS
@@ -39,22 +39,9 @@ API. The specifications are available at L<http://vimeo.com/api/docs/simple-api>
     my $video = $foo->video( $video_id );
     ...
 
-=head1 CONSTANTS
-
-=head2 $API_URL
-
-Vimeo API complete URL.
-
 =cut
 
 our $API_URL     = "http://vimeo.com/api/v2";
-
-=head2 $API_URL
-
-Vimeo API response format.
-
-=cut
-
 our $API_FORMAT  = "json";
 
 =head1 METHODS
@@ -211,6 +198,14 @@ You can find documentation for this module with the perldoc command.
 You can also look for information at:
 
 =over 4
+
+=item * TwitShell homepage
+
+L<http://alexlog.co.cc/projects/www-vimeo-simple>
+
+=item * Git repository
+
+L<http://github.com/AlexBio/WWW-Vimeo-Simple>
 
 =item * RT: CPAN's request tracker
 

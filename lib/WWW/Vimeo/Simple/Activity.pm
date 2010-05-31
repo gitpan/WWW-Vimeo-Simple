@@ -6,15 +6,15 @@ use strict;
 
 =head1 NAME
 
-WWW::Vimeo::Simple::Activity - Object-oriented Vimeo Simple API interface.
+WWW::Vimeo::Simple::Activity - Object-oriented Vimeo Simple API interface. Activity requests.
 
 =head1 VERSION
 
-Version 0.01
+Version 0.02
 
 =cut
 
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 
 =head1 SYNOPSIS
 
@@ -162,6 +162,14 @@ You can find documentation for this module with the perldoc command.
 You can also look for information at:
 
 =over 4
+
+=item * TwitShell homepage
+
+L<http://alexlog.co.cc/projects/www-vimeo-simple>
+
+=item * Git repository
+
+L<http://github.com/AlexBio/WWW-Vimeo-Simple>
 
 =item * RT: CPAN's request tracker
 
