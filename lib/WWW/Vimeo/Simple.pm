@@ -19,11 +19,11 @@ WWW::Vimeo::Simple - Object-oriented Vimeo Simple API interface.
 
 =head1 VERSION
 
-Version 0.02
+Version 0.03
 
 =cut
 
-our $VERSION = '0.02';
+our $VERSION = '0.03';
 
 
 =head1 SYNOPSIS
@@ -48,7 +48,7 @@ our $API_FORMAT  = "json";
 
 =head2 new
 
-Create a WWW::Vimeo::Simple object.
+Create a L<WWW::Vimeo::Simple> object.
 
 =cut
 
@@ -62,7 +62,7 @@ sub new {
 
 =head2 user( $user )
 
-Return a WWW::Vimeo::Simple::User object.
+Return a L<WWW::Vimeo::Simple::User> object.
 
 =cut
 
@@ -74,7 +74,7 @@ sub user {
 
 =head2 video( $video_id )
 
-Return a WWW::Vimeo::Simple::Video object.
+Return a L<WWW::Vimeo::Simple::Video> object.
 
 =cut
 
@@ -86,7 +86,7 @@ sub video {
 
 =head2 activity( $username )
 
-Return a WWW::Vimeo::Simple::Activity object.
+Return a L<WWW::Vimeo::Simple::Activity> object.
 
 =cut
 
@@ -98,7 +98,7 @@ sub activity {
 
 =head2 album( $album_id )
 
-Return a WWW::Vimeo::Simple::Album object.
+Return a L<WWW::Vimeo::Simple::Album> object.
 
 =cut
 
@@ -110,7 +110,7 @@ sub album {
 
 =head2 channel( $channel_name )
 
-Return a WWW::Vimeo::Simple::Channel object.
+Return a L<WWW::Vimeo::Simple::Channel> object.
 
 =cut
 
@@ -122,7 +122,7 @@ sub channel {
 
 =head2 group( $group_name )
 
-Return a WWW::Vimeo::Simple::Group object.
+Return a L<WWW::Vimeo::Simple::Group> object.
 
 =cut
 
@@ -194,6 +194,18 @@ automatically be notified of progress on your bug as I make changes.
 You can find documentation for this module with the perldoc command.
 
     perldoc WWW::Vimeo::Simple
+    
+    perldoc WWW::Vimeo::Simple::Activity
+    
+    perldoc WWW::Vimeo::Simple::Album
+    
+    perldoc WWW::Vimeo::Simple::Channel
+    
+    perldoc WWW::Vimeo::Simple::Group
+    
+    perldoc WWW::Vimeo::Simple::User
+    
+    perldoc WWW::Vimeo::Simple::Video
 
 You can also look for information at:
 

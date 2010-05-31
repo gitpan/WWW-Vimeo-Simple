@@ -1,3 +1,15 @@
+commit b93cf376d3075850d5ab8c35d7576813d66d7bc4
+Author: Alessandro Ghedini <al3xbio@gmail.com>
+Date:   Mon May 31 15:15:19 2010 +0200
+
+    add better linking between modules documentation
+
+commit 633b9154797c3326234e5b00dc7211b1cf19dddd
+Author: Alessandro Ghedini <al3xbio@gmail.com>
+Date:   Mon May 31 14:59:15 2010 +0200
+
+    update Changes
+
 commit f2d4e6a05b95ab5bb85f74dc4ad976e7f4a0a70d
 Author: Alessandro Ghedini <al3xbio@gmail.com>
 Date:   Mon May 31 14:58:45 2010 +0200
