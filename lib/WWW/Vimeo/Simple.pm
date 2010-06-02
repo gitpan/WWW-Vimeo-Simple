@@ -7,9 +7,10 @@ use WWW::Vimeo::Simple::Group;
 use WWW::Vimeo::Simple::User;
 use WWW::Vimeo::Simple::Video;
 
+use Carp;
 use LWP::UserAgent;
 use HTTP::Request::Common;
-use JSON -support_by_pp;
+use JSON;
 
 use strict;
 
@@ -19,11 +20,11 @@ WWW::Vimeo::Simple - Object-oriented Vimeo Simple API interface.
 
 =head1 VERSION
 
-Version 0.03
+Version 0.04
 
 =cut
 
-our $VERSION = '0.03';
+our $VERSION = '0.04';
 
 
 =head1 SYNOPSIS
@@ -160,6 +161,10 @@ sub get_request {
 
 	my $response = $ua -> request(GET $url) -> as_string;
 
+	my $status = (split / /,(split /\n/, $response)[0])[1];
+
+	croak "ERROR: Server reported status $status" if $status != 200;
+
 	return $response;
 }
 
@@ -173,8 +178,9 @@ sub parse_response {
 	my $self = shift;
 	my @data = split('\n\n', shift);
 	
-	my $json = new JSON;
-	my $json_text = $json -> decode($data[1]);
+	my $json_text = decode_json $data[1];
+	use Data::Dumper;
+	die Dumper $json_text;
 	
 	return $json_text;
 }

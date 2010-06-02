@@ -10,6 +10,14 @@ lib/WWW/Vimeo/Simple/Group.pm
 lib/WWW/Vimeo/Simple/User.pm
 lib/WWW/Vimeo/Simple/Video.pm
 t/00-load.t
+t/00-simple.t
+t/01-album.t
+t/01-user.t
+t/01-channel.t
+t/01-video.t
+t/01-activity.t
+t/01-group.t
+t/boilerplate.t
 t/manifest.t
 t/pod-coverage.t
 t/pod.t

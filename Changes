@@ -1,3 +1,21 @@
+commit b40009e335bc02c364388c0a331a955684f496d2
+Author: Alessandro Ghedini <al3xbio@gmail.com>
+Date:   Wed Jun 2 15:14:56 2010 +0200
+
+    remove JSON OO and PP only support features
+
+commit d3ba047464b167639b4a8756ad4fdb9bedc11d62
+Author: Alessandro Ghedini <al3xbio@gmail.com>
+Date:   Wed Jun 2 15:02:31 2010 +0200
+
+    add server status check and error reporting with Carp
+
+commit c59d76a6121fa39a9aec6929781bcb6ff87fa715
+Author: Alessandro Ghedini <al3xbio@gmail.com>
+Date:   Wed Jun 2 14:56:05 2010 +0200
+
+    add more tests
+
 commit b93cf376d3075850d5ab8c35d7576813d66d7bc4
 Author: Alessandro Ghedini <al3xbio@gmail.com>
 Date:   Mon May 31 15:15:19 2010 +0200
