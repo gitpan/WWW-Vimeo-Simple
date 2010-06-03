@@ -1,3 +1,33 @@
+commit efcaa28da5aeb6be3fbcabde744c2a854f94944a
+Author: Alessandro Ghedini <al3xbio@gmail.com>
+Date:   Thu Jun 3 20:18:46 2010 +0200
+
+    update version
+
+commit ec0544ab1b1f738bda6b24b6722a2b3021a08f98
+Author: Alessandro Ghedini <al3xbio@gmail.com>
+Date:   Thu Jun 3 20:14:33 2010 +0200
+
+    fix another stupid error... I'm so dumbass
+
+commit 78f413a7d06844fef3b51e7afc25e5bc7bbec715
+Author: Alessandro Ghedini <al3xbio@gmail.com>
+Date:   Thu Jun 3 20:13:12 2010 +0200
+
+    fix a stupid error in documentation
+
+commit 3675605a0c4ed4ef5f96ecd61463c771d5302159
+Author: Alessandro Ghedini <al3xbio@gmail.com>
+Date:   Wed Jun 2 15:30:05 2010 +0200
+
+    update version & MANIFEST
+
+commit 7f1e00d0876ae74d93cfbb69e3cb0df8ca6b4580
+Author: Alessandro Ghedini <al3xbio@gmail.com>
+Date:   Wed Jun 2 15:17:31 2010 +0200
+
+    actually add tests (error in commit c59d76a6121)
+
 commit b40009e335bc02c364388c0a331a955684f496d2
 Author: Alessandro Ghedini <al3xbio@gmail.com>
 Date:   Wed Jun 2 15:14:56 2010 +0200

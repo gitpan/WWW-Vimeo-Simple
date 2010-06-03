@@ -20,11 +20,11 @@ WWW::Vimeo::Simple - Object-oriented Vimeo Simple API interface.
 
 =head1 VERSION
 
-Version 0.04
+Version 0.05
 
 =cut
 
-our $VERSION = '0.04';
+our $VERSION = '0.05';
 
 
 =head1 SYNOPSIS
@@ -179,8 +179,6 @@ sub parse_response {
 	my @data = split('\n\n', shift);
 	
 	my $json_text = decode_json $data[1];
-	use Data::Dumper;
-	die Dumper $json_text;
 	
 	return $json_text;
 }
@@ -217,7 +215,7 @@ You can also look for information at:
 
 =over 4
 
-=item * TwitShell homepage
+=item * WWW::Vimeo::Simple homepage
 
 L<http://alexlog.co.cc/projects/www-vimeo-simple>
 

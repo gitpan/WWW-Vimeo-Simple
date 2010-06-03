@@ -10,11 +10,11 @@ WWW::Vimeo::Simple::User - Object-oriented Vimeo Simple API interface. User requ
 
 =head1 VERSION
 
-Version 0.04
+Version 0.05
 
 =cut
 
-our $VERSION = '0.04';
+our $VERSION = '0.05';
 
 
 =head1 SYNOPSIS
@@ -268,7 +268,7 @@ You can also look for information at:
 
 =over 4
 
-=item * TwitShell homepage
+=item * WWW::Vimeo::Simple homepage
 
 L<http://alexlog.co.cc/projects/www-vimeo-simple>
 
