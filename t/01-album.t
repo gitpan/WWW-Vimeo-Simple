@@ -1,10 +1,8 @@
 use Test::More tests => 1;
 
 use strict;
-use WWW::Vimeo::Simple;
+use WWW::Vimeo::Simple::Album;
 
-my $vimeo = WWW::Vimeo::Simple->new;
+my $album = WWW::Vimeo::Simple::Album->new;
 
-my $album = WWW::Vimeo::Simple->album;
-
-can_ok($album, qw(info videos data));
+can_ok($album, qw(info videos));

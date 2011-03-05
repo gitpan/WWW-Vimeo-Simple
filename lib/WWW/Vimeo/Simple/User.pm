@@ -1,21 +1,29 @@
 package WWW::Vimeo::Simple::User;
+BEGIN {
+  $WWW::Vimeo::Simple::User::VERSION = '0.06';
+}
+
+use Carp;
+use JSON;
+use Moose;
+use HTTP::Tiny;
 
 use WWW::Vimeo::Simple;
+use WWW::Vimeo::Simple::Video;
+use WWW::Vimeo::Simple::Album;
+use WWW::Vimeo::Simple::Channel;
+use WWW::Vimeo::Simple::Group;
 
+use warnings;
 use strict;
 
 =head1 NAME
 
-WWW::Vimeo::Simple::User - Object-oriented Vimeo Simple API interface. User requests.
+WWW::Vimeo::Simple::User - User requests for the Vimeo Simple API
 
 =head1 VERSION
 
-Version 0.05
-
-=cut
-
-our $VERSION = '0.05';
-
+version 0.06
 
 =head1 SYNOPSIS
 
@@ -24,186 +32,509 @@ API. The specifications are available at L<http://vimeo.com/api/docs/simple-api>
 
 User requests implementation.
 
-    use WWW::Vimeo::Simple;
+    use feature 'say';
+    use WWW::Vimeo::Simple::User;
 
-    my $foo = WWW::Vimeo::Simple->new();
+    # create a new user object
+    my $user = WWW::Vimeo::Simple::User -> new(display_name => $user);
 
-    my $user  = $foo->user( $username );
+    # retrieve user's information
+    $user -> info;
 
-    $user->info;
-    print $user->data->{'id'};
-    
-    $user->videos;
-    foreach $video(@{$user->data}) {
-	    print $video->;
+    # print user's information
+    say $user -> display_name;
+    say $user -> bio;
+    say $user -> url;
+
+    # retrieve user's videos
+    my $videos = $user -> videos;
+
+    foreach my $video (@$videos) {
+      say $video -> title;
+      say $video -> description;
+      say $video -> url;
     }
 
 =head1 METHODS
 
-=head2 new( $user_name )
+=head2 new( id => $user_id, display_name => $user_name )
 
-Create a WWW::Vimeo::Simple::User object
+Create a WWW::Vimeo::Simple::User object using the given user ID or
+name.
+
+An User object has the following attributes:
+
+=over 4
+
+=item * id
+
+User ID
 
 =cut
 
-sub new {
-	my ($class, $user_name) = @_;
- 
-	my $self = bless({user_name => $user_name}, $class);
+has 'id' => (
+	is  => 'rw',
+	isa => 'Int',
+);
 
-	return $self;
-}
+=item * display_name
+
+User name
+
+=cut
+
+has 'display_name' => (
+	is  => 'rw',
+	isa => 'Str',
+);
+
+=item * created_on
+
+Date the user signed up
+
+=cut
+
+has 'created_on' => (
+	is  => 'rw',
+	isa => 'Str',
+);
+
+=item * is_staff
+
+Is this user a staff member?
+
+=cut
+
+has 'is_staff' => (
+	is  => 'rw',
+	isa => 'Bool',
+);
+
+=item * is_plus
+
+Is this user a Vimeo Plus member?
+
+=cut
+
+has 'is_plus' => (
+	is  => 'rw',
+	isa => 'Bool',
+);
+
+=item * location
+
+The location of the user
+
+=cut
+
+has 'location' => (
+	is  => 'rw',
+	isa => 'Str',
+);
+
+=item * url
+
+User supplied url
+
+=cut
+
+has 'url' => (
+	is  => 'rw',
+	isa => 'Str',
+);
+
+=item * bio
+
+The bio information from the user profile
+
+=cut
+
+has 'bio' => (
+	is  => 'rw',
+	isa => 'Str',
+);
+
+=item * profile_url
+
+URL to the user profile
+
+=cut
+
+has 'profile_url' => (
+	is  => 'rw',
+	isa => 'Str',
+);
+
+=item * videos_url
+
+URL to the video list for this user
+
+=cut
+
+has 'videos_url' => (
+	is  => 'rw',
+	isa => 'Str',
+);
+
+=item * total_videos_uploaded
+
+Total # of videos uploaded
+
+=cut
+
+has 'total_videos_uploaded' => (
+	is  => 'rw',
+	isa => 'Int',
+);
+
+=item * total_videos_appears_in
+
+Total # of videos user appears in
+
+=cut
+
+has 'total_videos_appears_in' => (
+	is  => 'rw',
+	isa => 'Int',
+);
+
+=item * total_videos_liked
+
+Total # of videos liked by user
+
+=cut
+
+has 'total_videos_liked' => (
+	is  => 'rw',
+	isa => 'Int',
+);
+
+=item * total_contacts
+
+Total # of contacts
+
+=cut
+
+has 'total_contacts' => (
+	is  => 'rw',
+	isa => 'Int',
+);
+
+=item * total_albums
+
+Total # of albums
+
+=cut
+
+has 'total_albums' => (
+	is  => 'rw',
+	isa => 'Int',
+);
+
+=item * total_channels
+
+Total # of channels moderated by user
+
+=cut
+
+has 'total_channels' => (
+	is  => 'rw',
+	isa => 'Int',
+);
+
+=item * portrait_small
+
+Small user portrait (30px)
+
+=cut
+
+has 'portrait_small' => (
+	is  => 'rw',
+	isa => 'Str',
+);
+
+=item * portrait_medium
+
+Medium user portrait (100px)
+
+=cut
+
+has 'portrait_medium' => (
+	is  => 'rw',
+	isa => 'Str',
+);
+
+=item * portrait_large
+
+Large user portrait (300px)
+
+=back
 
 =head2 info
 
-Fetch user info for the specified user
+Fetch video info for the specified user.
 
 =cut
 
+has 'portrait_large' => (
+	is  => 'rw',
+	isa => 'Str',
+);
+
 sub info {
 	my $self = shift;
-	my $url  = make_url($self, 'info');
+	my $http = HTTP::Tiny -> new();
+	my $url  = _make_url($self, 'info');
 
-	$self -> {'data'} = WWW::Vimeo::Simple -> request($url);
+	my $response = $http -> get($url);
+	my $json_text = decode_json $response -> {'content'};
+
+	for my $key ( keys %$json_text ) {
+		if (defined $json_text -> {$key}) {
+			$self -> {$key} = $json_text -> {$key};
+		}
+	}
 }
 
 =head2 videos( $page )
 
-Fetch videos created by user, page optional (default 1)
+Fetch videos created by user, page optional (default 1). This method
+returns an array reference of L<WWW::Vimeo::Simple::Video> objects.
 
 =cut
 
 sub videos {
 	my ($self, $page) = @_;
-	my $url  = make_url($self, 'videos', $page);
+	my $http = HTTP::Tiny -> new();
+	my $url  = _make_url($self, 'videos', $page);
 
-	$self -> {'data'} = WWW::Vimeo::Simple -> request($url);
+	my $response = $http -> get($url);
+	my $json_text = decode_json $response -> {'content'};
+
+	my @videos;
+	foreach my $video ( @$json_text ) {
+		push @videos, WWW::Vimeo::Simple::Video -> new($video);
+	}
+
+	return \@videos;
 }
 
 =head2 likes( $page )
 
-Fetch videos the user likes, page optional (default 1)
+Fetch videos the user likes, page optional (default 1). This method
+returns an array reference of L<WWW::Vimeo::Simple::Video> objects.
 
 =cut
 
 sub likes {
 	my ($self, $page) = @_;
-	my $url  = make_url($self, 'likes', $page);
+	my $http = HTTP::Tiny -> new();
+	my $url  = _make_url($self, 'likes', $page);
 
-	$self -> {'data'} = WWW::Vimeo::Simple -> request($url);
+	my $response = $http -> get($url);
+	my $json_text = decode_json $response -> {'content'};
+
+	my @videos;
+	foreach my $video ( @$json_text ) {
+		push @videos, WWW::Vimeo::Simple::Video -> new($video);
+	}
+
+	return \@videos;
 }
 
 =head2 appears_in( $page )
 
-Fetch videos that the user appears in, page optional (default 1)
+Fetch videos that the user appears in, page optional (default 1).  This
+method returns an array reference of L<WWW::Vimeo::Simple::Video> objects.
 
 =cut
 
 sub appears_in {
 	my ($self, $page) = @_;
-	my $url  = make_url($self, 'appears_in', $page);
+	my $http = HTTP::Tiny -> new();
+	my $url  = _make_url($self, 'appears_in', $page);
 
-	$self -> {'data'} = WWW::Vimeo::Simple -> request($url);
+	my $response = $http -> get($url);
+	my $json_text = decode_json $response -> {'content'};
+
+	my @videos;
+	foreach my $video ( @$json_text ) {
+		push @videos, WWW::Vimeo::Simple::Video -> new($video);
+	}
+
+	return \@videos;
 }
 
 =head2 all_videos( $page )
 
-Fetch videos that the user appears in and created, page optional (default 1)
+Fetch videos that the user appears in and created, page optional (default 1).
+This method returns an array reference of L<WWW::Vimeo::Simple::Video> objects.
 
 =cut
 
 sub all_videos {
 	my ($self, $page) = @_;
-	my $url  = make_url($self, 'all_videos', $page);
+	my $http = HTTP::Tiny -> new();
+	my $url  = _make_url($self, 'all_videos', $page);
 
-	$self -> {'data'} = WWW::Vimeo::Simple -> request($url);
+	my $response = $http -> get($url);
+	my $json_text = decode_json $response -> {'content'};
+
+	my @videos;
+	foreach my $video ( @$json_text ) {
+		push @videos, WWW::Vimeo::Simple::Video -> new($video);
+	}
+
+	return \@videos;
 }
 
 =head2 subscriptions( $page )
 
-Fetch videos the user is subscribed to, page optional (default 1)
+Fetch videos the user is subscribed to, page optional (default 1). This
+method returns an array reference of L<WWW::Vimeo::Simple::Video> objects.
 
 =cut
 
 sub subscriptions {
 	my ($self, $page) = @_;
-	my $url  = make_url($self, 'subscriptions', $page);
+	my $http = HTTP::Tiny -> new();
+	my $url  = _make_url($self, 'subscriptions', $page);
 
-	$self -> {'data'} = WWW::Vimeo::Simple -> request($url);
+	my $response = $http -> get($url);
+	my $json_text = decode_json $response -> {'content'};
+
+	my @videos;
+	foreach my $video ( @$json_text ) {
+		push @videos, WWW::Vimeo::Simple::Video -> new($video);
+	}
+
+	return \@videos;
 }
 
 =head2 albums( $page )
 
-Fetch albums the user has created, page optional (default 1)
+Fetch albums the user has created, page optional (default 1). This method
+returns an array reference of L<WWW::Vimeo::Simple::Album> objects.
 
 =cut
 
 sub albums {
 	my ($self, $page) = @_;
-	my $url  = make_url($self, 'albums', $page);
+	my $http = HTTP::Tiny -> new();
+	my $url  = _make_url($self, 'albums', $page);
 
-	$self -> {'data'} = WWW::Vimeo::Simple -> request($url);
+	my $response = $http -> get($url);
+	my $json_text = decode_json $response -> {'content'};
+
+	my @albums;
+	foreach my $album ( @$json_text ) {
+		push @albums, WWW::Vimeo::Simple::Album -> new($album);
+	}
+
+	return \@albums;
 }
 
 =head2 channels( $page )
 
-Fetch channels the user has created and subscribed to, page optional (default 1)
+Fetch channels the user has created and subscribed to, page optional (default 1).
+This method returns an array reference of L<WWW::Vimeo::Simple::Channel> objects.
 
 =cut
 
 sub channels {
 	my ($self, $page) = @_;
-	my $url  = make_url($self, 'channels', $page);
+	my $http = HTTP::Tiny -> new();
+	my $url  = _make_url($self, 'channels', $page);
 
-	$self -> {'data'} = WWW::Vimeo::Simple -> request($url);
+	my $response = $http -> get($url);
+	my $json_text = decode_json $response -> {'content'};
+
+	my @channels;
+	foreach my $channel ( @$json_text ) {
+		push @channels, WWW::Vimeo::Simple::Channel -> new($channel);
+	}
+
+	return \@channels;
 }
 
 =head2 groups( $page )
 
-Fetch groups the user has created and joined, page optional (default 1)
+Fetch groups the user has created and joined, page optional (default 1).
+This method returns an array reference of L<WWW::Vimeo::Simple::Group> objects.
 
 =cut
 
 sub groups {
 	my ($self, $page) = @_;
-	my $url  = make_url($self, 'groups', $page);
+	my $http = HTTP::Tiny -> new();
+	my $url  = _make_url($self, 'groups', $page);
 
-	$self -> {'data'} = WWW::Vimeo::Simple -> request($url);
+	my $response = $http -> get($url);
+	my $json_text = decode_json $response -> {'content'};
+
+	my @groups;
+	foreach my $group ( @$json_text ) {
+		push @groups, WWW::Vimeo::Simple::Group -> new($group);
+	}
+
+	return \@groups;
 }
 
 =head2 contacts_videos( $page )
 
-Fetch videos that the user's contacts created, page optional (default 1)
+Fetch videos that the user's contacts created, page optional (default 1).
+This method returns an array reference of L<WWW::Vimeo::Simple::Video> objects.
 
 =cut
 
 sub contacts_videos {
 	my ($self, $page) = @_;
-	my $url  = make_url($self, 'contacts_videos', $page);
+	my $http = HTTP::Tiny -> new();
+	my $url  = _make_url($self, 'contacts_videos', $page);
 
-	$self -> {'data'} = WWW::Vimeo::Simple -> request($url);
+	my $response = $http -> get($url);
+	my $json_text = decode_json $response -> {'content'};
+
+	my @videos;
+	foreach my $video ( @$json_text ) {
+		push @videos, WWW::Vimeo::Simple::Video -> new($video);
+	}
+
+	return \@videos;
 }
 
 =head2 contacts_like( $page )
 
-Fetch videos that the user's contacts like, page optional (default 1)
+Fetch videos that the user's contacts like, page optional (default 1). This
+method returns an array reference of L<WWW::Vimeo::Simple::Video> objects.
 
 =cut
 
 sub contacts_like {
 	my ($self, $page) = @_;
-	my $url  = make_url($self, 'contecys_like', $page);
+	my $http = HTTP::Tiny -> new();
+	my $url  = _make_url($self, 'contacts_like', $page);
 
-	$self -> {'data'} = WWW::Vimeo::Simple -> request($url);
+	my $response = $http -> get($url);
+	my $json_text = decode_json $response -> {'content'};
+
+	my @videos;
+	foreach my $video ( @$json_text ) {
+		push @videos, WWW::Vimeo::Simple::Video -> new($video);
+	}
+
+	return \@videos;
 }
 
-=head2 make_url( $request )
+=head1 INTERNAL SUBROUTINES
+
+=head2 _make_url( $request )
 
 Build a Vimeo Simple API url
 
 =cut
 
-sub make_url {
+sub _make_url {
 	my ($self, $request, $page) = @_;
 
 	$page = defined $page ? $page : 1;
@@ -211,88 +542,14 @@ sub make_url {
 	my $api_url    = $WWW::Vimeo::Simple::API_URL;
 	my $api_format = $WWW::Vimeo::Simple::API_FORMAT;
 
-	return "$api_url/".$self -> {'user'}."/$request.$api_format?page=$page";
+	my $user = defined $self -> {'id'} ? $self -> {'id'} : $self -> {'display_name'};
+
+	return "$api_url/$user/$request.$api_format?page=$page";
 }
-
-=head2 data
-
-Return fetched data
-
-=cut
-
-sub data {
-	my $self = shift;
-
-	return $self -> {'data'};
-}
-
-=head1 USER INFO DATA
-
-	id			User ID
-	display_name 		User name
-	created_on 		Date the user signed up
-	is_staff 		Is this user a staff member?
-	is_plus 		Is this user a Vimeo Plus member?
-	location 		The location of the user
-	url 			User supplied url
-	bio 			The bio information from the user profile
-	profile_url 		URL to the user profile
-	videos_url 		URL to the video list for this user
-	total_videos_uploaded 	Total # of videos uploaded
-	total_videos_appears_in Total # of videos user appears in
-	total_videos_liked  	Total # of videos liked by user
-	total_contacts 		Total # of contacts
-	total_albums 		Total # of albums
-	total_channels 		Total # of channels moderated by user
-	portrait_small 		Small user portrait (30px)
-	portrait_medium 	Medium user portrait (100px)
-	portrait_large 		Large user portrait (300px)
 
 =head1 AUTHOR
 
 Alessandro Ghedini, C<< <alexbio at cpan.org> >>
-
-=head1 BUGS
-
-Please report any bugs or feature requests to C<bug-www-vimeo-simple at rt.cpan.org>, or through
-the web interface at L<http://rt.cpan.org/NoAuth/ReportBug.html?Queue=WWW-Vimeo-Simple>.  I will be notified, and then you'll
-automatically be notified of progress on your bug as I make changes.
-
-=head1 SUPPORT
-
-You can find documentation for this module with the perldoc command.
-
-    perldoc WWW::Vimeo::Simple::User
-
-You can also look for information at:
-
-=over 4
-
-=item * WWW::Vimeo::Simple homepage
-
-L<http://alexlog.co.cc/projects/www-vimeo-simple>
-
-=item * Git repository
-
-L<http://github.com/AlexBio/WWW-Vimeo-Simple>
-
-=item * RT: CPAN's request tracker
-
-L<http://rt.cpan.org/NoAuth/Bugs.html?Dist=WWW-Vimeo-Simple>
-
-=item * AnnoCPAN: Annotated CPAN documentation
-
-L<http://annocpan.org/dist/WWW-Vimeo-Simple>
-
-=item * CPAN Ratings
-
-L<http://cpanratings.perl.org/d/WWW-Vimeo-Simple>
-
-=item * Search CPAN
-
-L<http://search.cpan.org/dist/WWW-Vimeo-Simple/>
-
-=back
 
 =head1 LICENSE AND COPYRIGHT
 
@@ -303,7 +560,6 @@ under the terms of either: the GNU General Public License as published
 by the Free Software Foundation; or the Artistic License.
 
 See http://dev.perl.org/licenses/ for more information.
-
 
 =cut
 

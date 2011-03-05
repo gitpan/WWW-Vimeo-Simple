@@ -1,20 +1,27 @@
 package WWW::Vimeo::Simple::Group;
+BEGIN {
+  $WWW::Vimeo::Simple::Group::VERSION = '0.06';
+}
+
+use Carp;
+use JSON;
+use Moose;
+use HTTP::Tiny;
 
 use WWW::Vimeo::Simple;
+use WWW::Vimeo::Simple::Video;
+use WWW::Vimeo::Simple::User;
 
+use warnings;
 use strict;
 
 =head1 NAME
 
-WWW::Vimeo::Simple::Group - Object-oriented Vimeo Simple API interface. Group requests.
+WWW::Vimeo::Simple::Group - group requests for the Vimeo Simple API
 
 =head1 VERSION
 
-Version 0.05
-
-=cut
-
-our $VERSION = '0.05';
+version 0.06
 
 =head1 SYNOPSIS
 
@@ -23,58 +30,259 @@ API. The specifications are available at L<http://vimeo.com/api/docs/simple-api>
 
 Group requests implementation.
 
+    use feature 'say';
     use WWW::Vimeo::Simple::Group;
 
-    my $foo = WWW::Vimeo::Simple::Group->new();
+    my $group_id = 69571;
 
-    my $group = $foo->group( $group_name );
+    # create a new group object
+    my $group = WWW::Vimeo::Simple::Group -> new(id => $group_id);
 
-    $channel->users;
-    
-    foreach (@{$channel->data}) {
-	    print $_ -> {'display_name'};
+    # retrieve group's information
+    $group -> info;
+
+    # print group's information
+    say $group -> name;
+    say $group -> description;
+    say $group -> url;
+
+    # retrieve group's videos
+    my $videos = $group -> videos;
+
+    foreach my $video (@$videos) {
+      say $video -> title;
+      say $video -> description;
+      say $video -> url;
+    }
+
+    # retrieve group's users
+    my $users = $group -> users;
+
+    foreach my $user (@$users) {
+      say $user -> display_name;
+      say $user -> bio;
+      say $user -> url;
     }
 
 =head1 METHODS
 
-=head2 new( $group_name )
+=head2 new( id => $group_id )
 
-Create a WWW::Vimeo::Simple::Group object
+Create a WWW::Vimeo::Simple::Group object using the given group ID.
+
+A Group object has the following attributes:
+
+=over 4
+
+=item * id
+
+Group ID
 
 =cut
 
-sub new {
-	my ($class, $group_name) = @_;
- 
-	my $self = bless({group_name => $group_name}, $class);
+has 'id' => (
+	is  => 'rw',
+	isa => 'Int',
+);
 
-	return $self;
-}
+=item * name
+
+Group name
+
+=cut
+
+has 'name' => (
+	is  => 'rw',
+	isa => 'Str',
+);
+
+=item * description
+
+Group description
+
+=cut
+
+has 'description' => (
+	is  => 'rw',
+	isa => 'Str',
+);
+
+=item * logo
+
+Group logo (header)
+
+=cut
+
+has 'logo' => (
+	is  => 'rw',
+	isa => 'Str',
+);
+
+=item * url
+
+URL for the group page
+
+=cut
+
+has 'url' => (
+	is  => 'rw',
+	isa => 'Str',
+);
+
+=item * created_on
+
+Date the group was created
+
+=cut
+
+has 'created_on' => (
+	is  => 'rw',
+	isa => 'Str',
+);
+
+=item * creator_id
+
+User ID of the group creator
+
+=cut
+
+has 'creator_id' => (
+	is  => 'rw',
+	isa => 'Int',
+);
+
+=item * creator_display_name
+
+Name of the User who created the group
+
+=cut
+
+has 'creator_display_name' => (
+	is  => 'rw',
+	isa => 'Str',
+);
+
+=item * creator_url
+
+The URL to the channel creator's profile
+
+=cut
+
+has 'creator_url' => (
+	is  => 'rw',
+	isa => 'Str',
+);
+
+=item * total_members
+
+Total # of users joined
+
+=cut
+
+has 'total_members' => (
+	is  => 'rw',
+	isa => 'Int',
+);
+
+=item * total_videos
+
+Total # of videos posted to the group
+
+=cut
+
+has 'total_videos' => (
+	is  => 'rw',
+	isa => 'Int',
+);
+
+=item * total_files
+
+Total # of files uploaded to the group
+
+=cut
+
+has 'total_files' => (
+	is  => 'rw',
+	isa => 'Int',
+);
+
+=item * total_forum_topics
+
+Total # of forum topics
+
+=cut
+
+has 'total_forum_topics' => (
+	is  => 'rw',
+	isa => 'Int',
+);
+
+=item * total_events
+
+Total # of events
+
+=cut
+
+has 'total_events' => (
+	is  => 'rw',
+	isa => 'Int',
+);
+
+=item * total_upcoming_events
+
+Total # of upcoming events
+
+=cut
+
+has 'total_upcoming_events' => (
+	is  => 'rw',
+	isa => 'Int',
+);
+
+=back
 
 =head2 info
 
-Fetch group info for the specified group
+Fetch album info for the specified group.
 
 =cut
 
 sub info {
 	my $self = shift;
-	my $url  = make_url($self, 'info');
+	my $http = HTTP::Tiny -> new();
+	my $url = _make_url($self, 'info');
 
-	$self -> {'data'} = WWW::Vimeo::Simple -> request($url);
+	my $response = $http -> get($url);
+	my $json_text = decode_json $response -> {'content'};
+
+	for my $key ( keys %$json_text ) {
+		if (defined $json_text -> {$key}) {
+			$self -> {$key} = $json_text -> {$key};
+		}
+	}
 }
 
 =head2 videos( $page )
 
-Fetch videos in that group, page optional (default 1)
+Fetch videos in that group, page optional (default 1). This method returns
+an array reference of L<WWW::Vimeo::Simple::Video> objects.
 
 =cut
 
 sub videos {
 	my ($self, $page) = @_;
-	my $url  = make_url($self, 'videos', $page);
+	my $http = HTTP::Tiny -> new();
+	my $url  = _make_url($self, 'videos', $page);
 
-	$self -> {'data'} = WWW::Vimeo::Simple -> request($url);
+	my $response = $http -> get($url);
+	my $json_text = decode_json $response -> {'content'};
+
+	my @videos;
+	foreach my $video ( @$json_text ) {
+		push @videos, WWW::Vimeo::Simple::Video -> new($video);
+	}
+
+	return \@videos;
 }
 
 =head2 users( $page )
@@ -85,18 +293,29 @@ Fetch users in that group, page optional (default 1)
 
 sub users {
 	my ($self, $page) = @_;
-	my $url  = make_url($self, 'users', $page);
+	my $http = HTTP::Tiny -> new();
+	my $url  = _make_url($self, 'users', $page);
 
-	$self -> {'data'} = WWW::Vimeo::Simple -> request($url);
+	my $response = $http -> get($url);
+	my $json_text = decode_json $response -> {'content'};
+
+	my @users;
+	foreach my $user ( @$json_text ) {
+		push @users, WWW::Vimeo::Simple::User -> new($user);
+	}
+
+	return \@users;
 }
 
-=head2 make_url( $request )
+=head1 INTERNAL SUBROUTINES
+
+=head2 _make_url( $request )
 
 Build a Vimeo Simple API url
 
 =cut
 
-sub make_url {
+sub _make_url {
 	my ($self, $request, $page) = @_;
 
 	$page = defined $page ? $page : 1;
@@ -104,85 +323,12 @@ sub make_url {
 	my $api_url    = $WWW::Vimeo::Simple::API_URL;
 	my $api_format = $WWW::Vimeo::Simple::API_FORMAT;
 
-	return "$api_url/group/".$self -> {'group_name'}."/$request.$api_format?page=$page";
+	return "$api_url/group/".$self -> {'id'}."/$request.$api_format?page=$page";
 }
-
-=head2 data
-
-Return fetched data
-
-=cut
-
-sub data {
-	my $self = shift;
-
-	return $self -> {'data'};
-}
-
-=head1 GROUP INFO DATA
-
-	id 			Group ID
-	name 			Group name
-	description 		Group description
-	url 			URL for the group page
-	logo 			Group logo (header)
-	thumbnail 		Thumbnail
-	created_on 		Date the group was created
-	creator_id 		User ID of the group creator
-	creator_display_name 	Name of the User who created the group
-	creator_url 		The URL to the group creator's profile
-	total_members 		Total # of users joined
-	total_videos 		Total # of videos posted to the group
-	total_files 		Total # of files uploaded to the group
-	total_forum_topics 	Total # of forum topics
-	total_events 		Total # of events
-	total_upcoming_events 	Total # of upcoming events
 
 =head1 AUTHOR
 
 Alessandro Ghedini, C<< <alexbio at cpan.org> >>
-
-=head1 BUGS
-
-Please report any bugs or feature requests to C<bug-www-vimeo-simple at rt.cpan.org>, or through
-the web interface at L<http://rt.cpan.org/NoAuth/ReportBug.html?Queue=WWW-Vimeo-Simple>.  I will be notified, and then you'll
-automatically be notified of progress on your bug as I make changes.
-
-=head1 SUPPORT
-
-You can find documentation for this module with the perldoc command.
-
-    perldoc WWW::Vimeo::Simple::Group
-
-You can also look for information at:
-
-=over 4
-
-=item * WWW::Vimeo::Simple homepage
-
-L<http://alexlog.co.cc/projects/www-vimeo-simple>
-
-=item * Git repository
-
-L<http://github.com/AlexBio/WWW-Vimeo-Simple>
-
-=item * RT: CPAN's request tracker
-
-L<http://rt.cpan.org/NoAuth/Bugs.html?Dist=WWW-Vimeo-Simple>
-
-=item * AnnoCPAN: Annotated CPAN documentation
-
-L<http://annocpan.org/dist/WWW-Vimeo-Simple>
-
-=item * CPAN Ratings
-
-L<http://cpanratings.perl.org/d/WWW-Vimeo-Simple>
-
-=item * Search CPAN
-
-L<http://search.cpan.org/dist/WWW-Vimeo-Simple/>
-
-=back
 
 =head1 LICENSE AND COPYRIGHT
 
@@ -193,7 +339,6 @@ under the terms of either: the GNU General Public License as published
 by the Free Software Foundation; or the Artistic License.
 
 See http://dev.perl.org/licenses/ for more information.
-
 
 =cut
 

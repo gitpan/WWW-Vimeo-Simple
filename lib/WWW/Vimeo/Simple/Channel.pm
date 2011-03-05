@@ -1,20 +1,26 @@
 package WWW::Vimeo::Simple::Channel;
+BEGIN {
+  $WWW::Vimeo::Simple::Channel::VERSION = '0.06';
+}
+
+use Carp;
+use JSON;
+use Moose;
+use HTTP::Tiny;
 
 use WWW::Vimeo::Simple;
+use WWW::Vimeo::Simple::Video;
 
+use warnings;
 use strict;
 
 =head1 NAME
 
-WWW::Vimeo::Simple::Channel - Object-oriented Vimeo Simple API interface. Channel requests.
+WWW::Vimeo::Simple::Channel - Channel requests for the Vimeo Simple API
 
 =head1 VERSION
 
-Version 0.05
-
-=cut
-
-our $VERSION = '0.05';
+version 0.06
 
 =head1 SYNOPSIS
 
@@ -23,67 +29,229 @@ API. The specifications are available at L<http://vimeo.com/api/docs/simple-api>
 
 Channel requests implementation.
 
-    use WWW::Vimeo::Simple;
+    use feature 'say';
+    use WWW::Vimeo::Simple::Channel;
 
-    my $foo = WWW::Vimeo::Simple->new();
+    my $channel_id = 'staffpicks';
 
-    my $channel = $foo->channel( $channel_name );
+    # create a new channel object
+    my $channel = WWW::Vimeo::Simple::Channel -> new(name => $channel_id);
 
-    $channel->videos;
-    
-    foreach (@{$channel->data}) {
-	    print $_ -> {'title'};
+    # retrieve channel's information
+    $channel -> info;
+
+    # print channel's information
+    say $channel -> name;
+    say $channel -> description;
+    say $channel -> url;
+
+    # retrieve channel's videos
+    my $videos = $channel -> videos;
+
+    foreach my $video (@$videos) {
+      say $video -> title;
+      say $video -> description;
+      say $video -> url;
     }
 
 =head1 METHODS
 
-=head2 new( $channel_name )
+=head2 new( name => $channel_name, id => $id )
 
-Create a WWW::Vimeo::Simple::Channel object
+Create a WWW::Vimeo::Simple::Channel object using the given channel ID or
+name.
+
+A Channel object has the following attributes:
+
+=over
+
+=item * id
+
+Channel ID
 
 =cut
 
-sub new {
-	my ($class, $channel_name) = @_;
- 
-	my $self = bless({channel_name => $channel_name}, $class);
+has 'id' => (
+	is  => 'rw',
+	isa => 'Int',
+);
 
-	return $self;
-}
+=item * name
+
+Channel name
+
+=cut
+
+has 'name' => (
+	is  => 'rw',
+	isa => 'Str',
+);
+
+=item * description
+
+Channel description
+
+=cut
+
+has 'description' => (
+	is  => 'rw',
+	isa => 'Str',
+);
+
+=item * logo
+
+Channel logo (header)
+
+=cut
+
+has 'logo' => (
+	is  => 'rw',
+	isa => 'Str',
+);
+
+=item * url
+
+URL for the channel page
+
+=cut
+
+has 'url' => (
+	is  => 'rw',
+	isa => 'Str',
+);
+
+=item * rss
+
+RSS feed for the channel's videos
+
+=cut
+
+has 'rss' => (
+	is  => 'rw',
+	isa => 'Str',
+);
+
+=item * created_on
+
+Date the channel was created
+
+=cut
+
+has 'created_on' => (
+	is  => 'rw',
+	isa => 'Str',
+);
+
+=item * creator_id
+
+User ID of the channel creator
+
+=cut
+
+has 'creator_id' => (
+	is  => 'rw',
+	isa => 'Int',
+);
+
+=item * creator_display_name
+
+Name of the User who created the channel
+
+=cut
+
+has 'creator_display_name' => (
+	is  => 'rw',
+	isa => 'Str',
+);
+
+=item * creator_url
+
+The URL to the channel creator's profile
+
+=cut
+
+has 'creator_url' => (
+	is  => 'rw',
+	isa => 'Str',
+);
+
+=item * total_videos
+
+Total # of videos posted in the channel
+
+=cut
+
+has 'total_videos' => (
+	is  => 'rw',
+	isa => 'Int',
+);
+
+=item * total_subscribers
+
+Total # of users subscribed
+
+=cut
+
+has 'total_subscribers' => (
+	is  => 'rw',
+	isa => 'Int',
+);
+
+=back
 
 =head2 info
 
-Fetch channel info for the specified channel
+Fetch channel info for the specified channel.
 
 =cut
 
 sub info {
 	my $self = shift;
-	my $url  = make_url($self, 'info');
+	my $http = HTTP::Tiny -> new();
+	my $url = _make_url($self, 'info');
 
-	$self -> {'data'} = WWW::Vimeo::Simple -> request($url);
+	my $response = $http -> get($url);
+	my $json_text = decode_json $response -> {'content'};
+
+	for my $key ( keys %$json_text ) {
+		if (defined $json_text -> {$key}) {
+			$self -> {$key} = $json_text -> {$key};
+		}
+	}
 }
 
 =head2 videos( $page )
 
-Fetch videos in that channel, page optional (default 1)
+Fetch videos in that channel, page optional (default 1). This method returns
+an array reference of L<WWW::Vimeo::Simple::Video> objects.
 
 =cut
 
 sub videos {
 	my ($self, $page) = @_;
-	my $url  = make_url($self, 'videos', $page);
+	my $http = HTTP::Tiny -> new();
+	my $url  = _make_url($self, 'videos', $page);
 
-	$self -> {'data'} = WWW::Vimeo::Simple -> request($url);
+	my $response = $http -> get($url);
+	my $json_text = decode_json $response -> {'content'};
+
+	my @videos;
+	foreach my $video ( @$json_text ) {
+		push @videos, WWW::Vimeo::Simple::Video -> new($video);
+	}
+
+	return \@videos;
 }
 
-=head2 make_url( $request )
+=head1 INTERNAL SUBROUTINES
+
+=head2 _make_url( $request )
 
 Build a Vimeo Simple API url
 
 =cut
 
-sub make_url {
+sub _make_url {
 	my ($self, $request, $page) = @_;
 
 	$page = defined $page ? $page : 1;
@@ -91,81 +259,14 @@ sub make_url {
 	my $api_url    = $WWW::Vimeo::Simple::API_URL;
 	my $api_format = $WWW::Vimeo::Simple::API_FORMAT;
 
-	return "$api_url/channel/".$self -> {'channel_name'}."/$request.$api_format?page=$page";
+	my $channel = defined $self -> {'id'} ? $self -> {'id'} : $self -> {'name'};
+
+	return "$api_url/channel/$channel/$request.$api_format?page=$page";
 }
-
-=head2 data
-
-Return fetched data
-
-=cut
-
-sub data {
-	my $self = shift;
-
-	return $self -> {'data'};
-}
-
-=head1 CHANNEL INFO DATA
-
-	id 			Channel ID
-	name 			Channel name
-	description 		Channel description
-	logo 			Channel logo (header)
-	url 			URL for the channel page
-	rss 			RSS feed for the channel's videos
-	created_on 		Date the channel was created
-	creator_id 		User ID of the channel creator
-	creator_display_name 	Name of the User who created the channel
-	creator_url 		The URL to the channel creator's profile
-	total_videos 		Total # of videos posted in the channel
-	total_subscribers 	Total # of users subscribed
 
 =head1 AUTHOR
 
 Alessandro Ghedini, C<< <alexbio at cpan.org> >>
-
-=head1 BUGS
-
-Please report any bugs or feature requests to C<bug-www-vimeo-simple at rt.cpan.org>, or through
-the web interface at L<http://rt.cpan.org/NoAuth/ReportBug.html?Queue=WWW-Vimeo-Simple>.  I will be notified, and then you'll
-automatically be notified of progress on your bug as I make changes.
-
-=head1 SUPPORT
-
-You can find documentation for this module with the perldoc command.
-
-    perldoc WWW::Vimeo::Simple
-
-You can also look for information at:
-
-=over 4
-
-=item * WWW::Vimeo::Simple homepage
-
-L<http://alexlog.co.cc/projects/www-vimeo-simple>
-
-=item * Git repository
-
-L<http://github.com/AlexBio/WWW-Vimeo-Simple>
-
-=item * RT: CPAN's request tracker
-
-L<http://rt.cpan.org/NoAuth/Bugs.html?Dist=WWW-Vimeo-Simple>
-
-=item * AnnoCPAN: Annotated CPAN documentation
-
-L<http://annocpan.org/dist/WWW-Vimeo-Simple>
-
-=item * CPAN Ratings
-
-L<http://cpanratings.perl.org/d/WWW-Vimeo-Simple>
-
-=item * Search CPAN
-
-L<http://search.cpan.org/dist/WWW-Vimeo-Simple/>
-
-=back
 
 =head1 LICENSE AND COPYRIGHT
 
@@ -176,7 +277,6 @@ under the terms of either: the GNU General Public License as published
 by the Free Software Foundation; or the Artistic License.
 
 See http://dev.perl.org/licenses/ for more information.
-
 
 =cut
 

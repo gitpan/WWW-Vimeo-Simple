@@ -1,10 +1,8 @@
 use Test::More tests => 1;
 
 use strict;
-use WWW::Vimeo::Simple;
+use WWW::Vimeo::Simple::Group;
 
-my $vimeo = WWW::Vimeo::Simple->new;
+my $group = WWW::Vimeo::Simple::Group->new;
 
-my $group = WWW::Vimeo::Simple->group;
-
-can_ok($group, qw(info videos users data));
+can_ok($group, qw(info videos users));
