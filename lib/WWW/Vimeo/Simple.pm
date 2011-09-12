@@ -1,10 +1,7 @@
 package WWW::Vimeo::Simple;
 {
-  $WWW::Vimeo::Simple::VERSION = '0.07';
+  $WWW::Vimeo::Simple::VERSION = '0.08';
 }
-
-use HTTP::Tiny;
-use JSON;
 
 use strict;
 
@@ -14,7 +11,7 @@ WWW::Vimeo::Simple - Object-oriented Vimeo Simple API interface.
 
 =head1 VERSION
 
-version 0.07
+version 0.08
 
 =head1 SYNOPSIS
 
@@ -32,7 +29,7 @@ Alessandro Ghedini <alexbio@cpan.org>
 
 =head1 LICENSE AND COPYRIGHT
 
-Copyright 2010 Alessandro Ghedini.
+Copyright 2011 Alessandro Ghedini.
 
 This program is free software; you can redistribute it and/or modify it
 under the terms of either: the GNU General Public License as published

@@ -2,6 +2,34 @@
 9999-99-99 99:99:99 +0000 HEAD
 ==============================
 
+  commit a0a9a85cbb6e9762547b2e3f0369584f83d2dd00
+  Author: Alessandro Ghedini <al3xbio@gmail.com>
+  Date:   Mon Sep 12 11:56:20 2011 +0200
+  
+    bumo version
+
+  commit f0ee0140c51f7e1144fe62b1f22837dd784fd7a3
+  Author: Alessandro Ghedini <al3xbio@gmail.com>
+  Date:   Mon Sep 12 11:55:42 2011 +0200
+  
+    bump copyright year
+
+  commit 00fb74927321ad55f422d2a2f3dc685d4bd3a0e0
+  Author: Alessandro Ghedini <al3xbio@gmail.com>
+  Date:   Mon Sep 12 11:54:18 2011 +0200
+  
+    replace Moose with Mouse
+
+  commit 9d89971e5bf178d5a6f9f63faee49b770345af6e
+  Author: Alessandro Ghedini <al3xbio@gmail.com>
+  Date:   Mon Sep 12 11:54:07 2011 +0200
+  
+    clean-up 
+
+===============================
+2011-09-12 11:50:56 +0200 v0.07
+===============================
+
   commit 944fcb0a3f4a5172863c754df3a218b048a0b0d8
   Author: Alessandro Ghedini <al3xbio@gmail.com>
   Date:   Tue Mar 22 20:12:09 2011 +0100

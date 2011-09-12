@@ -19,7 +19,7 @@ requires:
   Exporter: 0
   HTTP::Tiny: 0
   JSON: 0
-  Moose: 0
+  Mouse: 0
   strict: 0
   vars: 0
   warnings: 0
@@ -27,7 +27,7 @@ resources:
   bugtracker: https://github.com/AlexBio/WWW-Vimeo-Simple/issues
   homepage: http://search.cpan.org/dist/WWW-Vimeo-Simple/
   repository: git://github.com/AlexBio/WWW-Vimeo-Simple.git
-version: 0.07
+version: 0.08
 x_Dist_Zilla:
   plugins:
     -

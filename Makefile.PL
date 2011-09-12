@@ -27,12 +27,12 @@ my %WriteMakefileArgs = (
     "Exporter" => 0,
     "HTTP::Tiny" => 0,
     "JSON" => 0,
-    "Moose" => 0,
+    "Mouse" => 0,
     "strict" => 0,
     "vars" => 0,
     "warnings" => 0
   },
-  "VERSION" => "0.07",
+  "VERSION" => "0.08",
   "test" => {
     "TESTS" => "t/*.t"
   }

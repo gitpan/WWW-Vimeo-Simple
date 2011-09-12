@@ -1,10 +1,10 @@
 package WWW::Vimeo::Simple::User::Activity;
 {
-  $WWW::Vimeo::Simple::User::Activity::VERSION = '0.07';
+  $WWW::Vimeo::Simple::User::Activity::VERSION = '0.08';
 }
 
 use JSON;
-use Moose;
+use Mouse;
 use HTTP::Tiny;
 
 use WWW::Vimeo::Simple;
@@ -18,7 +18,7 @@ WWW::Vimeo::Simple::User::Activity - Activity object
 
 =head1 VERSION
 
-version 0.07
+version 0.08
 
 =head1 METHODS
 
@@ -325,7 +325,7 @@ Alessandro Ghedini <alexbio@cpan.org>
 
 =head1 LICENSE AND COPYRIGHT
 
-Copyright 2010 Alessandro Ghedini.
+Copyright 2011 Alessandro Ghedini.
 
 This program is free software; you can redistribute it and/or modify it
 under the terms of either: the GNU General Public License as published
