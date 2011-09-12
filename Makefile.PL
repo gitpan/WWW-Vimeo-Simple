@@ -4,33 +4,37 @@ use warnings;
 
 
 
-use ExtUtils::MakeMaker 6.31;
+use ExtUtils::MakeMaker 6.30;
 
 
 
 my %WriteMakefileArgs = (
-  'ABSTRACT' => 'Object-oriented Vimeo Simple API interface.',
-  'AUTHOR' => 'Alessandro Ghedini <alexbio@cpan.org>',
-  'BUILD_REQUIRES' => {
-    'Test::More' => '0'
+  "ABSTRACT" => "Object-oriented Vimeo Simple API interface.",
+  "AUTHOR" => "Alessandro Ghedini <alexbio\@cpan.org>",
+  "BUILD_REQUIRES" => {
+    "File::Find" => 0,
+    "File::Temp" => 0,
+    "Test::More" => 0
   },
-  'CONFIGURE_REQUIRES' => {
-    'ExtUtils::MakeMaker' => '6.31'
+  "CONFIGURE_REQUIRES" => {
+    "ExtUtils::MakeMaker" => "6.30"
   },
-  'DISTNAME' => 'WWW-Vimeo-Simple',
-  'EXE_FILES' => [],
-  'LICENSE' => 'perl',
-  'NAME' => 'WWW::Vimeo::Simple',
-  'PREREQ_PM' => {
-    'Carp' => '0',
-    'Exporter' => '0',
-    'HTTP::Tiny' => '0',
-    'JSON' => '0',
-    'Moose' => '0'
+  "DISTNAME" => "WWW-Vimeo-Simple",
+  "EXE_FILES" => [],
+  "LICENSE" => "perl",
+  "NAME" => "WWW::Vimeo::Simple",
+  "PREREQ_PM" => {
+    "Exporter" => 0,
+    "HTTP::Tiny" => 0,
+    "JSON" => 0,
+    "Moose" => 0,
+    "strict" => 0,
+    "vars" => 0,
+    "warnings" => 0
   },
-  'VERSION' => '0.06',
-  'test' => {
-    'TESTS' => 't/*.t'
+  "VERSION" => "0.07",
+  "test" => {
+    "TESTS" => "t/*.t"
   }
 );
 

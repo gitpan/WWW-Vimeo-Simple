@@ -1,9 +1,8 @@
 package WWW::Vimeo::Simple::Group;
-BEGIN {
-  $WWW::Vimeo::Simple::Group::VERSION = '0.06';
+{
+  $WWW::Vimeo::Simple::Group::VERSION = '0.07';
 }
 
-use Carp;
 use JSON;
 use Moose;
 use HTTP::Tiny;
@@ -17,11 +16,11 @@ use strict;
 
 =head1 NAME
 
-WWW::Vimeo::Simple::Group - group requests for the Vimeo Simple API
+WWW::Vimeo::Simple::Group - Group requests for the Vimeo Simple API
 
 =head1 VERSION
 
-version 0.06
+version 0.07
 
 =head1 SYNOPSIS
 
@@ -328,7 +327,7 @@ sub _make_url {
 
 =head1 AUTHOR
 
-Alessandro Ghedini, C<< <alexbio at cpan.org> >>
+Alessandro Ghedini <alexbio@cpan.org>
 
 =head1 LICENSE AND COPYRIGHT
 

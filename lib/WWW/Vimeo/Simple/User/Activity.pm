@@ -1,9 +1,8 @@
 package WWW::Vimeo::Simple::User::Activity;
-BEGIN {
-  $WWW::Vimeo::Simple::User::Activity::VERSION = '0.06';
+{
+  $WWW::Vimeo::Simple::User::Activity::VERSION = '0.07';
 }
 
-use Carp;
 use JSON;
 use Moose;
 use HTTP::Tiny;
@@ -19,7 +18,7 @@ WWW::Vimeo::Simple::User::Activity - Activity object
 
 =head1 VERSION
 
-version 0.06
+version 0.07
 
 =head1 METHODS
 
@@ -322,7 +321,7 @@ has 'action_tags' => (
 
 =head1 AUTHOR
 
-Alessandro Ghedini, C<< <alexbio at cpan.org> >>
+Alessandro Ghedini <alexbio@cpan.org>
 
 =head1 LICENSE AND COPYRIGHT
 

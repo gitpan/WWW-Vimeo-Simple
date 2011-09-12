@@ -1,9 +1,8 @@
 package WWW::Vimeo::Simple::User;
-BEGIN {
-  $WWW::Vimeo::Simple::User::VERSION = '0.06';
+{
+  $WWW::Vimeo::Simple::User::VERSION = '0.07';
 }
 
-use Carp;
 use JSON;
 use Moose;
 use HTTP::Tiny;
@@ -23,7 +22,7 @@ WWW::Vimeo::Simple::User - User requests for the Vimeo Simple API
 
 =head1 VERSION
 
-version 0.06
+version 0.07
 
 =head1 SYNOPSIS
 
@@ -549,7 +548,7 @@ sub _make_url {
 
 =head1 AUTHOR
 
-Alessandro Ghedini, C<< <alexbio at cpan.org> >>
+Alessandro Ghedini <alexbio@cpan.org>
 
 =head1 LICENSE AND COPYRIGHT
 

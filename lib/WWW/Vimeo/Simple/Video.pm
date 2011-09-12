@@ -1,9 +1,8 @@
 package WWW::Vimeo::Simple::Video;
-BEGIN {
-  $WWW::Vimeo::Simple::Video::VERSION = '0.06';
+{
+  $WWW::Vimeo::Simple::Video::VERSION = '0.07';
 }
 
-use Carp;
 use JSON;
 use Moose;
 use HTTP::Tiny;
@@ -19,7 +18,7 @@ WWW::Vimeo::Simple::Video - Video requests for the Vimeo Simple API
 
 =head1 VERSION
 
-version 0.06
+version 0.07
 
 =head1 SYNOPSIS
 
@@ -102,11 +101,6 @@ has 'description' => (
 URL to a small version of the thumbnail
 
 =cut
-
-has 'thumbnail_small' => (
-	is  => 'rw',
-	isa => 'Str',
-);
 
 =item * thumbnail_medium
 
@@ -298,7 +292,7 @@ sub info {
 
 =head1 AUTHOR
 
-Alessandro Ghedini, C<< <alexbio at cpan.org> >>
+Alessandro Ghedini <alexbio@cpan.org>
 
 =head1 LICENSE AND COPYRIGHT
 

@@ -1,9 +1,8 @@
 package WWW::Vimeo::Simple::Activity;
-BEGIN {
-  $WWW::Vimeo::Simple::Activity::VERSION = '0.06';
+{
+  $WWW::Vimeo::Simple::Activity::VERSION = '0.07';
 }
 
-use Carp;
 use JSON;
 use Moose;
 use HTTP::Tiny;
@@ -20,7 +19,7 @@ WWW::Vimeo::Simple::Activity - Activity requests for the Vimeo Simple API
 
 =head1 VERSION
 
-version 0.06
+version 0.07
 
 =head1 SYNOPSIS
 
@@ -47,10 +46,10 @@ The module exports the following subroutines on request.
 
 =cut
 
-our (@ISA, @EXPORT_OK);
-
 BEGIN {
 	use Exporter 'import';
+	use vars qw(@ISA @EXPORT_OK);
+
 	@ISA = qw(Exporter);
 
 	@EXPORT_OK = qw(
@@ -198,7 +197,7 @@ sub _make_url {
 
 =head1 AUTHOR
 
-Alessandro Ghedini, C<< <alexbio at cpan.org> >>
+Alessandro Ghedini <alexbio@cpan.org>
 
 =head1 LICENSE AND COPYRIGHT
 

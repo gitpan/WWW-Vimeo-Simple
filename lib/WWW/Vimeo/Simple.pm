@@ -1,9 +1,8 @@
 package WWW::Vimeo::Simple;
-BEGIN {
-  $WWW::Vimeo::Simple::VERSION = '0.06';
+{
+  $WWW::Vimeo::Simple::VERSION = '0.07';
 }
 
-use Carp;
 use HTTP::Tiny;
 use JSON;
 
@@ -15,7 +14,7 @@ WWW::Vimeo::Simple - Object-oriented Vimeo Simple API interface.
 
 =head1 VERSION
 
-version 0.06
+version 0.07
 
 =head1 SYNOPSIS
 
@@ -29,7 +28,7 @@ our $API_FORMAT  = "json";
 
 =head1 AUTHOR
 
-Alessandro Ghedini, C<< <alexbio at cpan.org> >>
+Alessandro Ghedini <alexbio@cpan.org>
 
 =head1 LICENSE AND COPYRIGHT
 

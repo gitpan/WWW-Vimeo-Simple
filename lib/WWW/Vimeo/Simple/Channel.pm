@@ -1,9 +1,8 @@
 package WWW::Vimeo::Simple::Channel;
-BEGIN {
-  $WWW::Vimeo::Simple::Channel::VERSION = '0.06';
+{
+  $WWW::Vimeo::Simple::Channel::VERSION = '0.07';
 }
 
-use Carp;
 use JSON;
 use Moose;
 use HTTP::Tiny;
@@ -20,7 +19,7 @@ WWW::Vimeo::Simple::Channel - Channel requests for the Vimeo Simple API
 
 =head1 VERSION
 
-version 0.06
+version 0.07
 
 =head1 SYNOPSIS
 
@@ -52,7 +51,6 @@ Channel requests implementation.
       say $video -> title;
       say $video -> description;
       say $video -> url;
-    }
 
 =head1 METHODS
 
@@ -266,7 +264,7 @@ sub _make_url {
 
 =head1 AUTHOR
 
-Alessandro Ghedini, C<< <alexbio at cpan.org> >>
+Alessandro Ghedini <alexbio@cpan.org>
 
 =head1 LICENSE AND COPYRIGHT
 
