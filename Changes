@@ -2,89 +2,29 @@
 9999-99-99 99:99:99 +0000 HEAD
 ==============================
 
-  commit a0a9a85cbb6e9762547b2e3f0369584f83d2dd00
-  Author: Alessandro Ghedini <al3xbio@gmail.com>
-  Date:   Mon Sep 12 11:56:20 2011 +0200
-  
-    bumo version
+  [31mde030dd[m -[33m (HEAD, master)[m bump version [32m(2 minutes ago)[m
+  [31m68cac22[m -[33m[m use Any::Moose [32m(2 minutes ago)[m
+===============================
+2011-09-12 11:56:20 +0200 v0.08
+===============================
 
-  commit f0ee0140c51f7e1144fe62b1f22837dd784fd7a3
-  Author: Alessandro Ghedini <al3xbio@gmail.com>
-  Date:   Mon Sep 12 11:55:42 2011 +0200
-  
-    bump copyright year
-
-  commit 00fb74927321ad55f422d2a2f3dc685d4bd3a0e0
-  Author: Alessandro Ghedini <al3xbio@gmail.com>
-  Date:   Mon Sep 12 11:54:18 2011 +0200
-  
-    replace Moose with Mouse
-
-  commit 9d89971e5bf178d5a6f9f63faee49b770345af6e
-  Author: Alessandro Ghedini <al3xbio@gmail.com>
-  Date:   Mon Sep 12 11:54:07 2011 +0200
-  
-    clean-up 
-
+  [31ma0a9a85[m -[33m (v0.08, origin/master)[m bumo version [32m(12 days ago)[m
+  [31mf0ee014[m -[33m[m bump copyright year [32m(12 days ago)[m
+  [31m00fb749[m -[33m[m replace Moose with Mouse [32m(12 days ago)[m
+  [31m9d89971[m -[33m[m clean-up [32m(12 days ago)[m
 ===============================
 2011-09-12 11:50:56 +0200 v0.07
 ===============================
 
-  commit 944fcb0a3f4a5172863c754df3a218b048a0b0d8
-  Author: Alessandro Ghedini <al3xbio@gmail.com>
-  Date:   Tue Mar 22 20:12:09 2011 +0100
-  
-    bump version
-
-  commit 4c113aa4a1d64755cde5b10039848530a051944f
-  Author: Alessandro Ghedini <al3xbio@gmail.com>
-  Date:   Mon Sep 12 11:44:32 2011 +0200
-  
-    do not use Carp
-
-  commit c2abfdb36499c357c936e91a5507bf0d92244dcb
-  Author: Alessandro Ghedini <al3xbio@gmail.com>
-  Date:   Sun Sep 11 15:37:51 2011 +0200
-  
-    remove cruft tests
-
-  commit b3dc69ab8f6ad6a6313e834afcd009eb5def121f
-  Author: Alessandro Ghedini <al3xbio@gmail.com>
-  Date:   Mon Apr 25 18:49:25 2011 +0200
-  
-    use Author::ALEXBIO dzil bundle
-
-  commit 835f024b762c0224f75b17d10629fc4121478693
-  Author: Alessandro Ghedini <al3xbio@gmail.com>
-  Date:   Tue Mar 22 18:56:41 2011 +0100
-  
-    fix conflicts for Album.pm
-
-  commit 7e6685dcd025aed71243dd424da54959ff0f4def
-  Author: Alessandro Ghedini <al3xbio@gmail.com>
-  Date:   Tue Mar 22 18:52:34 2011 +0100
-  
-    fix 'Global symbol @ISA/@EXPORT_OK requires explicit package name'
-
-  commit 74836feb1886f629c46f928b113f9475d435e386
-  Author: Alessandro Ghedini <al3xbio@gmail.com>
-  Date:   Thu Mar 17 19:47:17 2011 +0100
-  
-    fix email address
-
-  commit db5cb77a3a1f24b002bba8f0309f8582c0603553
-  Merge: 9240fc2 da00182
-  Author: Alessandro Ghedini <al3xbio@gmail.com>
-  Date:   Sat Mar 5 13:23:58 2011 +0100
-  
-    fix conflicts
-
-  commit da001829dda89f3a1e01655099f4b47f2ef62280
-  Author: Alessandro Ghedini <al3xbio@gmail.com>
-  Date:   Fri Mar 4 21:12:14 2011 +0100
-  
-    switch to Dist::Zilla 
-
+  [31m944fcb0[m -[33m (v0.07)[m bump version [32m(12 days ago)[m
+  [31m4c113aa[m -[33m[m do not use Carp [32m(12 days ago)[m
+  [31mc2abfdb[m -[33m[m remove cruft tests [32m(12 days ago)[m
+  [31mb3dc69a[m -[33m[m use Author::ALEXBIO dzil bundle [32m(12 days ago)[m
+  [31m835f024[m -[33m[m fix conflicts for Album.pm [32m(6 months ago)[m
+  [31m7e6685d[m -[33m[m fix 'Global symbol @ISA/@EXPORT_OK requires explicit package name' [32m(6 months ago)[m
+  [31m74836fe[m -[33m[m fix email address [32m(6 months ago)[m
+  [31mdb5cb77[m -[33m[m fix conflicts [32m(7 months ago)[m
+  [31mda00182[m -[33m[m switch to Dist::Zilla [32m(7 months ago)[m
 ===================================
 End of changes in the last 365 days
 ===================================

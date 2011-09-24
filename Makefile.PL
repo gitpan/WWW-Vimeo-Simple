@@ -24,15 +24,15 @@ my %WriteMakefileArgs = (
   "LICENSE" => "perl",
   "NAME" => "WWW::Vimeo::Simple",
   "PREREQ_PM" => {
+    "Any::Moose" => 0,
     "Exporter" => 0,
     "HTTP::Tiny" => 0,
     "JSON" => 0,
-    "Mouse" => 0,
     "strict" => 0,
     "vars" => 0,
     "warnings" => 0
   },
-  "VERSION" => "0.08",
+  "VERSION" => "0.09",
   "test" => {
     "TESTS" => "t/*.t"
   }

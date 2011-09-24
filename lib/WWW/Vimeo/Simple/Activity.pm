@@ -1,10 +1,10 @@
 package WWW::Vimeo::Simple::Activity;
 {
-  $WWW::Vimeo::Simple::Activity::VERSION = '0.08';
+  $WWW::Vimeo::Simple::Activity::VERSION = '0.09';
 }
 
 use JSON;
-use Mouse;
+use Any::Moose;
 use HTTP::Tiny;
 
 use WWW::Vimeo::Simple;
@@ -19,7 +19,7 @@ WWW::Vimeo::Simple::Activity - Activity requests for the Vimeo Simple API
 
 =head1 VERSION
 
-version 0.08
+version 0.09
 
 =head1 SYNOPSIS
 
