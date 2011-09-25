@@ -2,24 +2,30 @@
 9999-99-99 99:99:99 +0000 HEAD
 ==============================
 
-  [31mde030dd[m -[33m (HEAD, master)[m bump version [32m(2 minutes ago)[m
-  [31m68cac22[m -[33m[m use Any::Moose [32m(2 minutes ago)[m
+  [31maf57dea[m -[33m (HEAD, master)[m bump version [32m(6 seconds ago)[m
+  [31m7968fb2[m -[33m[m make everything immutable [32m(33 seconds ago)[m
+===============================
+2011-09-24 16:14:54 +0200 v0.09
+===============================
+
+  [31mde030dd[m -[33m (v0.09, origin/master)[m bump version [32m(23 hours ago)[m
+  [31m68cac22[m -[33m[m use Any::Moose [32m(23 hours ago)[m
 ===============================
 2011-09-12 11:56:20 +0200 v0.08
 ===============================
 
-  [31ma0a9a85[m -[33m (v0.08, origin/master)[m bumo version [32m(12 days ago)[m
-  [31mf0ee014[m -[33m[m bump copyright year [32m(12 days ago)[m
-  [31m00fb749[m -[33m[m replace Moose with Mouse [32m(12 days ago)[m
-  [31m9d89971[m -[33m[m clean-up [32m(12 days ago)[m
+  [31ma0a9a85[m -[33m (v0.08)[m bumo version [32m(13 days ago)[m
+  [31mf0ee014[m -[33m[m bump copyright year [32m(13 days ago)[m
+  [31m00fb749[m -[33m[m replace Moose with Mouse [32m(13 days ago)[m
+  [31m9d89971[m -[33m[m clean-up [32m(13 days ago)[m
 ===============================
 2011-09-12 11:50:56 +0200 v0.07
 ===============================
 
-  [31m944fcb0[m -[33m (v0.07)[m bump version [32m(12 days ago)[m
-  [31m4c113aa[m -[33m[m do not use Carp [32m(12 days ago)[m
-  [31mc2abfdb[m -[33m[m remove cruft tests [32m(12 days ago)[m
-  [31mb3dc69a[m -[33m[m use Author::ALEXBIO dzil bundle [32m(12 days ago)[m
+  [31m944fcb0[m -[33m (v0.07)[m bump version [32m(13 days ago)[m
+  [31m4c113aa[m -[33m[m do not use Carp [32m(13 days ago)[m
+  [31mc2abfdb[m -[33m[m remove cruft tests [32m(13 days ago)[m
+  [31mb3dc69a[m -[33m[m use Author::ALEXBIO dzil bundle [32m(13 days ago)[m
   [31m835f024[m -[33m[m fix conflicts for Album.pm [32m(6 months ago)[m
   [31m7e6685d[m -[33m[m fix 'Global symbol @ISA/@EXPORT_OK requires explicit package name' [32m(6 months ago)[m
   [31m74836fe[m -[33m[m fix email address [32m(6 months ago)[m

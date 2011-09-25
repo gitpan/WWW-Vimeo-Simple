@@ -1,6 +1,6 @@
 package WWW::Vimeo::Simple;
 {
-  $WWW::Vimeo::Simple::VERSION = '0.09';
+  $WWW::Vimeo::Simple::VERSION = '0.10';
 }
 
 use strict;
@@ -11,7 +11,7 @@ WWW::Vimeo::Simple - Object-oriented Vimeo Simple API interface.
 
 =head1 VERSION
 
-version 0.09
+version 0.10
 
 =head1 SYNOPSIS
 

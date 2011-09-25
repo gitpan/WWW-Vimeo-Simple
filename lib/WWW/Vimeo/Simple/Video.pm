@@ -1,6 +1,6 @@
 package WWW::Vimeo::Simple::Video;
 {
-  $WWW::Vimeo::Simple::Video::VERSION = '0.09';
+  $WWW::Vimeo::Simple::Video::VERSION = '0.10';
 }
 
 use JSON;
@@ -18,7 +18,7 @@ WWW::Vimeo::Simple::Video - Video requests for the Vimeo Simple API
 
 =head1 VERSION
 
-version 0.09
+version 0.10
 
 =head1 SYNOPSIS
 
@@ -305,5 +305,9 @@ by the Free Software Foundation; or the Artistic License.
 See http://dev.perl.org/licenses/ for more information.
 
 =cut
+
+no Any::Moose;
+
+__PACKAGE__ -> meta -> make_immutable;
 
 1; # End of WWW::Vimeo::Simple::Video
