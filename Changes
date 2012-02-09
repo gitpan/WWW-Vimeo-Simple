@@ -1,36 +1,355 @@
-==============================
-9999-99-99 99:99:99 +0000 HEAD
-==============================
+==================================================
+Changes from 2011-02-09 00:00:00 +0000 to present.
+==================================================
 
-  [31maf57dea[m -[33m (HEAD, master)[m bump version [32m(6 seconds ago)[m
-  [31m7968fb2[m -[33m[m make everything immutable [32m(33 seconds ago)[m
-===============================
-2011-09-24 16:14:54 +0200 v0.09
-===============================
+-----------------------------------------
+version 0.11 at 2012-02-09 10:37:40 +0000
+-----------------------------------------
 
-  [31mde030dd[m -[33m (v0.09, origin/master)[m bump version [32m(23 hours ago)[m
-  [31m68cac22[m -[33m[m use Any::Moose [32m(23 hours ago)[m
-===============================
-2011-09-12 11:56:20 +0200 v0.08
-===============================
+  Change: 51a08771b7bd28f661117917e3feadbcde3995f3
+  Author: Alessandro Ghedini <al3xbio@gmail.com>
+  Date : 2012-02-09 11:32:50 +0000
 
-  [31ma0a9a85[m -[33m (v0.08)[m bumo version [32m(13 days ago)[m
-  [31mf0ee014[m -[33m[m bump copyright year [32m(13 days ago)[m
-  [31m00fb749[m -[33m[m replace Moose with Mouse [32m(13 days ago)[m
-  [31m9d89971[m -[33m[m clean-up [32m(13 days ago)[m
-===============================
-2011-09-12 11:50:56 +0200 v0.07
-===============================
+    Video.pm: actually add thumbnail_small attribute (closes #1) 
 
-  [31m944fcb0[m -[33m (v0.07)[m bump version [32m(13 days ago)[m
-  [31m4c113aa[m -[33m[m do not use Carp [32m(13 days ago)[m
-  [31mc2abfdb[m -[33m[m remove cruft tests [32m(13 days ago)[m
-  [31mb3dc69a[m -[33m[m use Author::ALEXBIO dzil bundle [32m(13 days ago)[m
-  [31m835f024[m -[33m[m fix conflicts for Album.pm [32m(6 months ago)[m
-  [31m7e6685d[m -[33m[m fix 'Global symbol @ISA/@EXPORT_OK requires explicit package name' [32m(6 months ago)[m
-  [31m74836fe[m -[33m[m fix email address [32m(6 months ago)[m
-  [31mdb5cb77[m -[33m[m fix conflicts [32m(7 months ago)[m
-  [31mda00182[m -[33m[m switch to Dist::Zilla [32m(7 months ago)[m
-===================================
-End of changes in the last 365 days
-===================================
+  Change: a46422bbb20baee9529b92b65a39e69a84f6695b
+  Author: Alessandro Ghedini <al3xbio@gmail.com>
+  Date : 2012-02-08 14:37:47 +0000
+
+    use Git::NextVersion plugin 
+
+-----------------------------------------
+version 0.10 at 2011-09-25 13:02:00 +0000
+-----------------------------------------
+
+  Change: af57dea6bf184fa1e9a0cee609c22f22f3ff6776
+  Author: Alessandro Ghedini <al3xbio@gmail.com>
+  Date : 2011-09-25 15:02:00 +0000
+
+    bump version 
+
+  Change: 7968fb2229a711fa4eb174cc02ff39970b519c2a
+  Author: Alessandro Ghedini <al3xbio@gmail.com>
+  Date : 2011-09-25 15:01:33 +0000
+
+    make everything immutable 
+
+-----------------------------------------
+version 0.09 at 2011-09-24 14:14:54 +0000
+-----------------------------------------
+
+  Change: de030dd88f0742305f1e490f0b116697afc1702d
+  Author: Alessandro Ghedini <al3xbio@gmail.com>
+  Date : 2011-09-24 16:14:54 +0000
+
+    bump version 
+
+  Change: 68cac222f9db1e195e9c7eb6b657889d8f7edb45
+  Author: Alessandro Ghedini <al3xbio@gmail.com>
+  Date : 2011-09-24 16:14:37 +0000
+
+    use Any::Moose 
+
+-----------------------------------------
+version 0.08 at 2011-09-12 09:56:20 +0000
+-----------------------------------------
+
+  Change: a0a9a85cbb6e9762547b2e3f0369584f83d2dd00
+  Author: Alessandro Ghedini <al3xbio@gmail.com>
+  Date : 2011-09-12 11:56:20 +0000
+
+    bumo version 
+
+  Change: f0ee0140c51f7e1144fe62b1f22837dd784fd7a3
+  Author: Alessandro Ghedini <al3xbio@gmail.com>
+  Date : 2011-09-12 11:55:42 +0000
+
+    bump copyright year 
+
+  Change: 00fb74927321ad55f422d2a2f3dc685d4bd3a0e0
+  Author: Alessandro Ghedini <al3xbio@gmail.com>
+  Date : 2011-09-12 11:54:18 +0000
+
+    replace Moose with Mouse 
+
+  Change: 9d89971e5bf178d5a6f9f63faee49b770345af6e
+  Author: Alessandro Ghedini <al3xbio@gmail.com>
+  Date : 2011-09-12 11:54:07 +0000
+
+    clean-up 
+
+-----------------------------------------
+version 0.07 at 2011-09-12 09:50:56 +0000
+-----------------------------------------
+
+  Change: 944fcb0a3f4a5172863c754df3a218b048a0b0d8
+  Author: Alessandro Ghedini <al3xbio@gmail.com>
+  Date : 2011-09-12 11:50:56 +0000
+
+    bump version 
+
+  Change: 4c113aa4a1d64755cde5b10039848530a051944f
+  Author: Alessandro Ghedini <al3xbio@gmail.com>
+  Date : 2011-09-12 11:50:56 +0000
+
+    do not use Carp 
+
+  Change: c2abfdb36499c357c936e91a5507bf0d92244dcb
+  Author: Alessandro Ghedini <al3xbio@gmail.com>
+  Date : 2011-09-12 11:50:56 +0000
+
+    remove cruft tests 
+
+  Change: b3dc69ab8f6ad6a6313e834afcd009eb5def121f
+  Author: Alessandro Ghedini <al3xbio@gmail.com>
+  Date : 2011-09-12 11:50:56 +0000
+
+    use Author::ALEXBIO dzil bundle 
+
+  Change: 835f024b762c0224f75b17d10629fc4121478693
+  Author: Alessandro Ghedini <al3xbio@gmail.com>
+  Date : 2011-03-22 18:57:19 +0000
+
+    fix conflicts for Album.pm 
+
+  Change: 7e6685dcd025aed71243dd424da54959ff0f4def
+  Author: Alessandro Ghedini <al3xbio@gmail.com>
+  Date : 2011-03-22 18:53:44 +0000
+
+    fix 'Global symbol @ISA/@EXPORT_OK requires explicit package name' 
+
+  Change: 74836feb1886f629c46f928b113f9475d435e386
+  Author: Alessandro Ghedini <al3xbio@gmail.com>
+  Date : 2011-03-17 19:47:17 +0000
+
+    fix email address 
+
+  Change: db5cb77a3a1f24b002bba8f0309f8582c0603553
+  Author: Alessandro Ghedini <al3xbio@gmail.com>
+  Date : 2011-03-05 13:24:53 +0000
+
+    fix conflicts 
+
+  Change: da001829dda89f3a1e01655099f4b47f2ef62280
+  Author: Alessandro Ghedini <al3xbio@gmail.com>
+  Date : 2011-03-04 21:12:14 +0000
+
+    switch to Dist::Zilla 
+
+-----------------------------------------
+version 0.06 at 2011-03-05 12:14:28 +0000
+-----------------------------------------
+
+  Change: 9240fc21e69da992b3c3057b6bd0594e8096dce2
+  Author: Alessandro Ghedini <al3xbio@gmail.com>
+  Date : 2011-03-05 13:14:28 +0000
+
+    bump version 
+
+  Change: 7243482b56c1b347d29dad83018de34f2012a80a
+  Author: Alessandro Ghedini <al3xbio@gmail.com>
+  Date : 2011-03-05 13:13:33 +0000
+
+    Activity.pm: switch to HTTP::Tiny and Moose 
+
+  Change: f12de6ed0ae143be53ccd42771ff4be9dadd68ad
+  Author: Alessandro Ghedini <al3xbio@gmail.com>
+  Date : 2011-03-05 13:13:33 +0000
+
+    move attributes description under new 
+
+  Change: 6bac41b343af0bdfe100b1c404f37c0f70e32d0d
+  Author: Alessandro Ghedini <al3xbio@gmail.com>
+  Date : 2011-03-05 13:13:33 +0000
+
+    add examples 
+
+  Change: fe93cc78e441286bac2f7decbefd3cd4cc2e4507
+  Author: Alessandro Ghedini <al3xbio@gmail.com>
+  Date : 2011-03-05 13:13:32 +0000
+
+    rename make_url -> _make_url 
+
+  Change: a55c4b5e013dbfdbaec8cb43dcabc898e64ab2bb
+  Author: Alessandro Ghedini <al3xbio@gmail.com>
+  Date : 2011-03-05 13:13:32 +0000
+
+    remove cruft from Simple.pm 
+
+  Change: 3138e1790189eeae2170a2bcb3e617048d6cb07e
+  Author: Alessandro Ghedini <al3xbio@gmail.com>
+  Date : 2011-03-05 13:13:32 +0000
+
+    update tests 
+
+  Change: 00167e5b49ffd77bc66efcb5170f1a52166f8ce5
+  Author: Alessandro Ghedini <al3xbio@gmail.com>
+  Date : 2011-03-05 12:28:59 +0000
+
+    User.pm: switch to HTTP::Tiny and Moose 
+
+  Change: d4ca4245e87a9e7c7d871abf6f2b3e8192a4b5cd
+  Author: Alessandro Ghedini <al3xbio@gmail.com>
+  Date : 2011-03-05 12:28:59 +0000
+
+    Group.pm: switch to HTTP::Tiny and Moose 
+
+  Change: f6f0ff23bad0002c7d68c0f5e16d58abdb77584f
+  Author: Alessandro Ghedini <al3xbio@gmail.com>
+  Date : 2011-03-04 23:45:47 +0000
+
+    Channel.pm: switch to HTTP::Tiny and Moose 
+
+  Change: d0a72c22dfaa132b5af821ca6259de3aff5b6d8a
+  Author: Alessandro Ghedini <al3xbio@gmail.com>
+  Date : 2011-03-04 23:45:47 +0000
+
+    Album.pm: switch to HTTP::Tiny and Moose 
+
+  Change: e788f5291faf4063a0636a4900516ecf66815b78
+  Author: Alessandro Ghedini <al3xbio@gmail.com>
+  Date : 2011-03-04 23:45:47 +0000
+
+    Video.pm: switch to HTTP::Tiny and Moose 
+
+  Change: 66ee6b594ceaf8f2c698d40e43403586be6887ee
+  Author: Alessandro Ghedini <al3xbio@gmail.com>
+  Date : 2011-03-04 23:45:47 +0000
+
+    switch to Dist::Zilla 
+
+  Change: 09490f357e07e443a35bc0139dfd0b6e23309b46
+  Author: Alessandro Ghedini <al3xbio@gmail.com>
+  Date : 2010-06-03 20:19:02 +0000
+
+    update Changes 
+
+  Change: efcaa28da5aeb6be3fbcabde744c2a854f94944a
+  Author: Alessandro Ghedini <al3xbio@gmail.com>
+  Date : 2010-06-03 20:18:46 +0000
+
+    update version 
+
+  Change: ec0544ab1b1f738bda6b24b6722a2b3021a08f98
+  Author: Alessandro Ghedini <al3xbio@gmail.com>
+  Date : 2010-06-03 20:14:33 +0000
+
+    fix another stupid error... I'm so dumbass 
+
+  Change: 78f413a7d06844fef3b51e7afc25e5bc7bbec715
+  Author: Alessandro Ghedini <al3xbio@gmail.com>
+  Date : 2010-06-03 20:13:12 +0000
+
+    fix a stupid error in documentation 
+
+  Change: 3675605a0c4ed4ef5f96ecd61463c771d5302159
+  Author: Alessandro Ghedini <al3xbio@gmail.com>
+  Date : 2010-06-02 15:30:05 +0000
+
+    update version & MANIFEST 
+
+  Change: 7f1e00d0876ae74d93cfbb69e3cb0df8ca6b4580
+  Author: Alessandro Ghedini <al3xbio@gmail.com>
+  Date : 2010-06-02 15:17:31 +0000
+
+    actually add tests (error in commit c59d76a6121) 
+
+  Change: b40009e335bc02c364388c0a331a955684f496d2
+  Author: Alessandro Ghedini <al3xbio@gmail.com>
+  Date : 2010-06-02 15:14:56 +0000
+
+    remove JSON OO and PP only support features 
+
+  Change: d3ba047464b167639b4a8756ad4fdb9bedc11d62
+  Author: Alessandro Ghedini <al3xbio@gmail.com>
+  Date : 2010-06-02 15:02:31 +0000
+
+    add server status check and error reporting with Carp 
+
+  Change: c59d76a6121fa39a9aec6929781bcb6ff87fa715
+  Author: Alessandro Ghedini <al3xbio@gmail.com>
+  Date : 2010-06-02 14:56:05 +0000
+
+    add more tests 
+
+  Change: b93cf376d3075850d5ab8c35d7576813d66d7bc4
+  Author: Alessandro Ghedini <al3xbio@gmail.com>
+  Date : 2010-05-31 15:15:19 +0000
+
+    add better linking between modules documentation 
+
+  Change: 633b9154797c3326234e5b00dc7211b1cf19dddd
+  Author: Alessandro Ghedini <al3xbio@gmail.com>
+  Date : 2010-05-31 14:59:15 +0000
+
+    update Changes 
+
+  Change: f2d4e6a05b95ab5bb85f74dc4ad976e7f4a0a70d
+  Author: Alessandro Ghedini <al3xbio@gmail.com>
+  Date : 2010-05-31 14:58:45 +0000
+
+    update version 
+
+  Change: ff37f5ba1318337d7fe841115f9ca563720273cf
+  Author: Alessandro Ghedini <al3xbio@gmail.com>
+  Date : 2010-05-31 14:58:10 +0000
+
+    add better description in section NAME of modules' pod 
+
+  Change: 25316f6bc3d17b42c9cd961eac77d51ab60e362b
+  Author: Alessandro Ghedini <al3xbio@gmail.com>
+  Date : 2010-05-31 14:41:12 +0000
+
+    add documentation changes 
+
+  Change: 8b3d247948903d400ab8c2fad4ea295f104a53b9
+  Author: Alessandro Ghedini <al3xbio@gmail.com>
+  Date : 2010-05-30 20:02:09 +0000
+
+    update Changes 
+
+  Change: ba73c78e37e8eae09bfd4a5be54086496eabfe6e
+  Author: Alessandro Ghedini <al3xbio@gmail.com>
+  Date : 2010-05-30 19:41:19 +0000
+
+    implement Group.pm 
+
+  Change: f6b55348e3598d93d3eda4e719039d0f4c37c99f
+  Author: Alessandro Ghedini <al3xbio@gmail.com>
+  Date : 2010-05-30 19:17:51 +0000
+
+    add documentation improvements 
+
+  Change: bf3739111ce32b4df7cd2da8c69a9fcef953d42e
+  Author: Alessandro Ghedini <al3xbio@gmail.com>
+  Date : 2010-05-30 19:05:52 +0000
+
+    add page support 
+
+  Change: a4e9c4281a3f58c135740d9335ef4257c388234b
+  Author: Alessandro Ghedini <al3xbio@gmail.com>
+  Date : 2010-05-30 18:45:32 +0000
+
+    implement Channel.pm 
+
+  Change: 2b935936678f5da3d95e06ebc4643a873fab2b43
+  Author: Alessandro Ghedini <al3xbio@gmail.com>
+  Date : 2010-05-30 18:32:25 +0000
+
+    implement Album.pm 
+
+  Change: df4bcd412ff60ee119ad3bae8fff1e30ae43cd8f
+  Author: Alessandro Ghedini <al3xbio@gmail.com>
+  Date : 2010-05-30 18:17:23 +0000
+
+    implement Activity.pm 
+
+  Change: de585110d3f8d2fd8ac5cf18b278428880a8c877
+  Author: Alessandro Ghedini <al3xbio@gmail.com>
+  Date : 2010-05-30 17:38:45 +0000
+
+    first commit 
+
+================
+End of releases.
+================

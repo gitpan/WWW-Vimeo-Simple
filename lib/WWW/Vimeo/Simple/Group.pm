@@ -1,6 +1,6 @@
 package WWW::Vimeo::Simple::Group;
 {
-  $WWW::Vimeo::Simple::Group::VERSION = '0.10';
+  $WWW::Vimeo::Simple::Group::VERSION = '0.11';
 }
 
 use JSON;
@@ -20,7 +20,7 @@ WWW::Vimeo::Simple::Group - Group requests for the Vimeo Simple API
 
 =head1 VERSION
 
-version 0.10
+version 0.11
 
 =head1 SYNOPSIS
 

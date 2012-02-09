@@ -1,6 +1,6 @@
 package WWW::Vimeo::Simple::Video;
 {
-  $WWW::Vimeo::Simple::Video::VERSION = '0.10';
+  $WWW::Vimeo::Simple::Video::VERSION = '0.11';
 }
 
 use JSON;
@@ -18,7 +18,7 @@ WWW::Vimeo::Simple::Video - Video requests for the Vimeo Simple API
 
 =head1 VERSION
 
-version 0.10
+version 0.11
 
 =head1 SYNOPSIS
 
@@ -101,6 +101,11 @@ has 'description' => (
 URL to a small version of the thumbnail
 
 =cut
+
+has 'thumbnail_small' => (
+	is  => 'rw',
+	isa => 'Str',
+);
 
 =item * thumbnail_medium
 
