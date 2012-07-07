@@ -1,6 +1,6 @@
 package WWW::Vimeo::Simple::Video;
 {
-  $WWW::Vimeo::Simple::Video::VERSION = '0.11';
+  $WWW::Vimeo::Simple::Video::VERSION = '0.12';
 }
 
 use JSON;
@@ -18,7 +18,7 @@ WWW::Vimeo::Simple::Video - Video requests for the Vimeo Simple API
 
 =head1 VERSION
 
-version 0.11
+version 0.12
 
 =head1 SYNOPSIS
 

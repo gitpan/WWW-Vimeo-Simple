@@ -1,6 +1,6 @@
 package WWW::Vimeo::Simple::Album;
 {
-  $WWW::Vimeo::Simple::Album::VERSION = '0.11';
+  $WWW::Vimeo::Simple::Album::VERSION = '0.12';
 }
 
 use JSON;
@@ -19,7 +19,7 @@ WWW::Vimeo::Simple::Album - Album requests for the Vimeo Simple API
 
 =head1 VERSION
 
-version 0.11
+version 0.12
 
 =head1 SYNOPSIS
 

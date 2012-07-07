@@ -1,6 +1,6 @@
 package WWW::Vimeo::Simple::User::Activity;
 {
-  $WWW::Vimeo::Simple::User::Activity::VERSION = '0.11';
+  $WWW::Vimeo::Simple::User::Activity::VERSION = '0.12';
 }
 
 use JSON;
@@ -18,7 +18,7 @@ WWW::Vimeo::Simple::User::Activity - Activity object
 
 =head1 VERSION
 
-version 0.11
+version 0.12
 
 =head1 METHODS
 
