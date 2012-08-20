@@ -1,7 +1,10 @@
 package WWW::Vimeo::Simple::User;
 {
-  $WWW::Vimeo::Simple::User::VERSION = '0.12';
+  $WWW::Vimeo::Simple::User::VERSION = '0.13';
 }
+
+use strict;
+use warnings;
 
 use JSON;
 use Any::Moose;
@@ -13,16 +16,13 @@ use WWW::Vimeo::Simple::Album;
 use WWW::Vimeo::Simple::Channel;
 use WWW::Vimeo::Simple::Group;
 
-use warnings;
-use strict;
-
 =head1 NAME
 
 WWW::Vimeo::Simple::User - User requests for the Vimeo Simple API
 
 =head1 VERSION
 
-version 0.12
+version 0.13
 
 =head1 SYNOPSIS
 

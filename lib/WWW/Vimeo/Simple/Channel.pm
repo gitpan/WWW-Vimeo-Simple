@@ -1,7 +1,10 @@
 package WWW::Vimeo::Simple::Channel;
 {
-  $WWW::Vimeo::Simple::Channel::VERSION = '0.12';
+  $WWW::Vimeo::Simple::Channel::VERSION = '0.13';
 }
+
+use strict;
+use warnings;
 
 use JSON;
 use Any::Moose;
@@ -10,16 +13,13 @@ use HTTP::Tiny;
 use WWW::Vimeo::Simple;
 use WWW::Vimeo::Simple::Video;
 
-use warnings;
-use strict;
-
 =head1 NAME
 
 WWW::Vimeo::Simple::Channel - Channel requests for the Vimeo Simple API
 
 =head1 VERSION
 
-version 0.12
+version 0.13
 
 =head1 SYNOPSIS
 
