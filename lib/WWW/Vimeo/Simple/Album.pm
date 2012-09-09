@@ -1,6 +1,6 @@
 package WWW::Vimeo::Simple::Album;
 {
-  $WWW::Vimeo::Simple::Album::VERSION = '0.13';
+  $WWW::Vimeo::Simple::Album::VERSION = '0.14';
 }
 
 use strict;
@@ -19,7 +19,7 @@ WWW::Vimeo::Simple::Album - Album requests for the Vimeo Simple API
 
 =head1 VERSION
 
-version 0.13
+version 0.14
 
 =head1 SYNOPSIS
 

@@ -1,8 +1,10 @@
-use Test::More tests => 1;
+#!perl
 
-use strict;
+use Test::More;
+
 use WWW::Vimeo::Simple::Group;
 
 my $group = WWW::Vimeo::Simple::Group->new;
+can_ok $group, qw(info videos users);
 
-can_ok($group, qw(info videos users));
+done_testing;

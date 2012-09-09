@@ -1,8 +1,10 @@
-use Test::More tests => 1;
+#!perl
 
-use strict;
+use Test::More;
+
 use WWW::Vimeo::Simple::Video;
 
 my $video = WWW::Vimeo::Simple::Video->new;
+can_ok $video, qw(info);
 
-can_ok($video, qw(info));
+done_testing;

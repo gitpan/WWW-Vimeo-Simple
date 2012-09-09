@@ -1,6 +1,6 @@
 package WWW::Vimeo::Simple::User::Activity;
 {
-  $WWW::Vimeo::Simple::User::Activity::VERSION = '0.13';
+  $WWW::Vimeo::Simple::User::Activity::VERSION = '0.14';
 }
 
 use strict;
@@ -18,7 +18,7 @@ WWW::Vimeo::Simple::User::Activity - Activity object
 
 =head1 VERSION
 
-version 0.13
+version 0.14
 
 =head1 METHODS
 

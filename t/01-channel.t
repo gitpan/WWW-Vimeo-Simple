@@ -1,8 +1,10 @@
-use Test::More tests => 1;
+#!perl
 
-use strict;
+use Test::More;
+
 use WWW::Vimeo::Simple::Channel;
 
 my $channel = WWW::Vimeo::Simple::Channel->new;
+can_ok $channel, qw(info videos);
 
-can_ok($channel, qw(info videos));
+done_testing;

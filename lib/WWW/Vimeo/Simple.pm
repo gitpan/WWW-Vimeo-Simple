@@ -1,6 +1,6 @@
 package WWW::Vimeo::Simple;
 {
-  $WWW::Vimeo::Simple::VERSION = '0.13';
+  $WWW::Vimeo::Simple::VERSION = '0.14';
 }
 
 use strict;
@@ -8,16 +8,19 @@ use warnings;
 
 =head1 NAME
 
-WWW::Vimeo::Simple - Object-oriented Vimeo Simple API interface.
+WWW::Vimeo::Simple - (DEPRECATED) Object-oriented Vimeo Simple API interface.
 
 =head1 VERSION
 
-version 0.13
+version 0.14
 
 =head1 SYNOPSIS
 
 This module is a full object-oriented implementation of the Vimeo Simple
 API. The specifications are available at L<http://vimeo.com/api/docs/simple-api>.
+
+B<Note>: WWW::Vimeo::Simple is now deprecated and pretty much unmaintained. Get
+in touch if you want to maintain this.
 
 =cut
 
